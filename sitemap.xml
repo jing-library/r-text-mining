@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://r-text-mining.github.io/NA/00-introduction.html</loc>
+  </url>
+  <url>
     <loc>https://r-text-mining.github.io/NA/01-introduction.html</loc>
   </url>
   <url>
@@ -17,6 +20,9 @@
   </url>
   <url>
     <loc>https://r-text-mining.github.io/NA/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-text-mining.github.io/NA/instructor/00-introduction.html</loc>
   </url>
   <url>
     <loc>https://r-text-mining.github.io/NA/instructor/01-introduction.html</loc>
