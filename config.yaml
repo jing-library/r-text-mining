@@ -16,7 +16,7 @@ title: Using R for Text Mining
 created: 2022-06-14
 
 # Comma-separated list of keywords for the lesson
-keywords: text-mining, R, frequency, sentiments 
+keywords: text-mining, R, word frequency, sentiment analysis 
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
