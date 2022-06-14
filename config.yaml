@@ -26,7 +26,7 @@ life_cycle: pre-alpha
 license: CC-BY 4.0
 
 # Link to the source repository for this lesson
-source: https://jing-library.github.io/r-text-mining/
+source: https://github.com/jing-library/r-text-mining/episodes/
 
 # Default branch of your lesson
 branch: main
