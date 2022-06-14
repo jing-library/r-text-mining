@@ -2,8 +2,5 @@
 site: sandpaper::sandpaper_site
 ---
 
-This is a new lesson built with [The Carpentries Workbench][workbench]. 
-
-
-[workbench]: https://carpentries.github.io/sandpaper-docs
+This is an example lesson created during Collaborative Lesson Development Training June 2022.
 
