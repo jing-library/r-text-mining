@@ -12,7 +12,8 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- TODO
+- Analyze sentiment using general-purpose lexicons
+- Visualize the sentiment analysis results using column chart and word cloud 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
