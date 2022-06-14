@@ -6,13 +6,14 @@ exercises: 0
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- TODO 
+- TODO
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- TODO
+- Clean up the example documents with the package tidytext
+- Calculate the word frequencies in the example documents
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
