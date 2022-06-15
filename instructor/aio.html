@@ -309,7 +309,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -340,7 +340,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -369,7 +369,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -486,12 +486,19 @@ any links that you are not going to use.
 <div id="challenge-1-can-you-do-it" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Can you do it?</h3>
 <div class="callout-content">
-<p>What is the output of this command?</p>
+<p>Rearrange the lines below to display the word(s) that appear over 600 times.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span class="va">tidy_books</span>
+  <span class="fu">filter</span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">600</span><span class="op">)</span>
+  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">xlab</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -505,6 +512,19 @@ any links that you are not going to use.
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">filter</span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">600</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">xlab</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span></code></pre>
+</div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -621,7 +641,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -652,7 +672,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -681,7 +701,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
