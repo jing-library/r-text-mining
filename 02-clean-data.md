@@ -1,5 +1,5 @@
 ---
-title: "Using Markdown"
+title: "Clean up the Text"
 teaching: 0
 exercises: 0
 ---
