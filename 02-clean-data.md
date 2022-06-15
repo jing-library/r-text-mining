@@ -46,16 +46,33 @@ associated with the lessons. They appear in the "Instructor View"
 
 ## Challenge 1: Can you do it?
 
-What is the output of this command?
+Rearrange the lines below to display the word(s) that appear over 600 times.
 
 ```r
-paste("This", "new", "lesson", "looks", "good")
+tidy_books
+  filter(n > 600)
+  mutate(word = reorder(word, n))
+  count(word, sort = TRUE) 
+  ggplot(aes(word, n)) +
+	  geom_col() +
+	  xlab(NULL) +
+	  coord_flip()
 ```
 
 :::::::::::::::::::::::: solution 
 
 ## Output
- 
+
+```r
+tidy_books %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 600) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+```
 ```output
 [1] "This new lesson looks good"
 ```
