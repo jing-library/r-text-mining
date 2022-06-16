@@ -7,7 +7,8 @@ sets the Learner needs to have installed.
 
 ## Data Sets
 
-Download the [data zip file](data/data.zip) and unzip it to your Desktop
+Download and install R and R Studio [data zip file](data/data.zip) and unzip it to your Desktop
+
 
 ## Software Setup
 
