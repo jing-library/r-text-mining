@@ -223,7 +223,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Clean up the Text</h1>
-        <p> Last updated on 2022-06-16 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-06-21 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -253,7 +253,9 @@
 </div>
 </div>
 <section id="introduction"><h2 class="section-heading">Introduction</h2>
-<hr class="half-width"><p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
+<hr class="half-width"><p>R is powerful processing tabular data, or data displayed in columns or tables. R can also handle non-tabular data such as text. Julia Silge and David Robinson followed the tidy data principles branded by Hadley Wickham and developed the package tidytext to analyze textual data.</p>
+<p>In the package tidytext, tidy text is defined as a one-token-per-row data frame, where a token is a meaningful unit of text, such as a word, a sentence, or a paragraph, that we are interested in analyzing. Tokenization is a process of splitting text into tokens.</p>
+<p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
 <p>What you need to know is that there are three sections required for a valid Carpentries lesson:</p>
 <ol style="list-style-type: decimal"><li>
 <code>questions</code> are displayed at the beginning of the episode to prime the learner for the content.</li>
@@ -292,7 +294,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -334,7 +336,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -413,7 +415,7 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/02-clean-data.html",
   "identifier": "https://jing-library.github.io/r-text-mining/02-clean-data.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-06-16",
+  "dateModified": "2022-06-21",
   "datePublished": "2022-06-21"
 }
 
