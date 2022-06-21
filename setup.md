@@ -7,7 +7,7 @@ sets the Learner needs to have installed.
 
 ## Data Sets
 
-This lesson uses the data sets from the [Gutenberg Project](https://www.gutenberg.org/) collection. We will install the package <span style="background-color: gray">gutenbergr</span>, download the books and metadata in the class. 
+This lesson uses the data sets from the [Gutenberg Project](https://www.gutenberg.org/) collection. We will install the package `gutenbergr`, download the books and metadata in the class. 
 
 
 ## Software Setup
