@@ -8,6 +8,6 @@
 "episodes/02-clean-data.Rmd" "b910f1d1f234cfef5a1ca446a02b1068" "site/built/02-clean-data.md" "2022-06-21"
 "episodes/03-sentiment-analysis.Rmd" "62dc5d4a6b6162cde56ba3886fdf5185" "site/built/03-sentiment-analysis.md" "2022-06-14"
 "instructors/instructor-notes.md" "60b93493cf1da06dfd63255d73854461" "site/built/instructor-notes.md" "2022-06-14"
-"learners/setup.md" "5df5341cb492b45551581fd1a6c9175b" "site/built/setup.md" "2022-06-16"
+"learners/setup.md" "1da0f4aed4ba852347d5013588ea8864" "site/built/setup.md" "2022-06-21"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-06-14"
 "renv/profiles/lesson-requirements/renv.lock" "7790c31f0bf5cca241513717e1d5ac0a" "site/built/renv.lock" "2022-06-14"
