@@ -1,6 +1,6 @@
 # sandpaper files
 episodes/*html
-# site/*
+site/*
 !site/README.md
 
 # History files
