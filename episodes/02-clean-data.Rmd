@@ -22,12 +22,12 @@ exercises: 0
 R is powerful processing tabular data, or data displayed in columns or tables. 
 R can also handle non-tabular data such as text. Julia Silge and David Robinson
 followed the tidy data principles branded by Hadley Wickham and developed the 
-package tidytext to analyze textual data. 
+package `tidytext` to analyze textual data. 
 
-In the package tidytext, tidy text is defined as a one-token-per-row data frame,
-where a token is a meaningful unit of text, such as a word, a sentence, or a
-paragraph, that we are interested in analyzing. Tokenization is a process of 
-splitting text into tokens. 
+In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
+frame, where a **token** is a meaningful unit of text, such as a word, a sentence, 
+or a paragraph, that we are interested in analyzing. **Tokenization** is a process 
+of splitting text into tokens. 
 
 
 This is a lesson created via The Carpentries Workbench. It is written in
