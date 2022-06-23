@@ -17,12 +17,30 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
+## Introduction - What is Text Mining
 
-R is powerful processing tabular data, or data displayed in columns or tables. 
-R can also handle non-tabular data such as text. Julia Silge and David Robinson
-followed the tidy data principles branded by Hadley Wickham and developed the 
-package `tidytext` to analyze textual data. 
+Depending on how it is organized, data can be grouped into two categories: 
+**structured data** and **unstructured data**. **Structured data** is data that has 
+been predefined and formatted to a tabular format with numerous rows and columns, 
+such as data stored a relational database, or membership information housed in an
+Excel spreadsheet. While **unformatted data** does not have a predefined data format.
+It comes in various formats, for example, email, presentation, images, etc. Another
+category is a blend between structured data and unstructured data formats, which is
+called **semi-structured data**. It refers to what would normally be considered 
+unstructured data, but that also has metadata that identifies certain characteristics. 
+Some common examples of semi-structured data are XML, JSON, and HTML files. 
+
+**Text mining**, or **text analytics**, is the process of exploring and analyzing 
+unstructured or semi-structured text data to derive information and identify key 
+concepts, pattens, relationships, or other attributions of the data. 
+
+
+
+R is powerful processing structured data, or tabular data, where data display in 
+columns or tables. R can also handle unstructured data such as text. Julia Silge and 
+David Robinson followed the [tidy data principles](https://doi.org/10.18637/jss.v059.i10) 
+branded by [Hadley Wickham](https://hadley.nz/) and developed the package 
+`tidytext` to analyze textual data. 
 
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
 frame, where a **token** is a meaningful unit of text, such as a word, a sentence, 
