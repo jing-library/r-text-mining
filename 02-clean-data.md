@@ -57,19 +57,46 @@ in tidy formats.
 
 ## Token and Tokenization
 In R, textual data can be stored as character vectors. For example:
-`{r}
+
+```r
 lyrics <- c("How many roads must a man walk down", 
             "Before you call him a man?", 
             "How many seas must a white dove sail", 
             "Before she sleeps in the sand?", 
             "Yes, and how many times must the cannonballs fly", 
             "Before they're forever banned?")
-
 lyrics
-`
+```
+```output
+[1] "How many roads must a man walk down"             
+[2] "Before you call him a man?"                      
+[3] "How many seas must a white dove sail"            
+[4] "Before she sleeps in the sand?"                  
+[5] "Yes, and how many times must the cannonballs fly"
+[6] "Before they're forever banned?"
+```
+To tokenize this character vector, we first need to put it into a data
+frame. We use the function [tibble](https://tibble.tidyverse.org/reference/tibble.html) 
+from the package `tidyverse` to convert a character vector into a tibble. 
 
+```r
+library(tidyverse)
+lyrics_df <- tibble(line = 1:6, lyrics)
 
-
+lyrics_df
+```
+```output
+# A tibble: 6 × 2
+   line lyrics                                          
+  <int> <chr>                                           
+1     1 How many roads must a man walk down             
+2     2 Before you call him a man?                      
+3     3 How many seas must a white dove sail            
+4     4 Before she sleeps in the sand?                  
+5     5 Yes, and how many times must the cannonballs fly
+6     6 Before they're forever banned? 
+```
+Next, we tokenize the textual data into units for analyses. Usually, 
 
 
 This is a lesson created via The Carpentries Workbench. It is written in
