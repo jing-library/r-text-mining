@@ -75,9 +75,9 @@ lyrics
 [5] "Yes, and how many times must the cannonballs fly"
 [6] "Before they're forever banned?"
 ```
-To tokenize this character vector, we first need to put it into a data
-frame. We use the function [tibble](https://tibble.tidyverse.org/reference/tibble.html) 
-from the package `tidyverse` to convert a character vector into a tibble. 
+To tokenize this character vector, we first need to put it into a data frame. We use the 
+function [tibble](https://tibble.tidyverse.org/reference/tibble.html) from the package 
+`tidyverse` to convert a character vector into a tibble. 
 
 ```r
 library(tidyverse)
@@ -97,14 +97,15 @@ lyrics_df
 6     6 Before they're forever banned? 
 ```
 Next step is tokenization, where we split the text into units, or tokens for further
-analyses. A word is a common token when analyzing textual data. We will use the
-function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html). 
+analyses. We will use the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
+to break the lyrics into words and strip punctuations. 
 
 ```r
 library(tidytext)
 
-lyrics_df %>% 
-  unnest_tokens(word, lyrics)
+unnest_tokens(tbl = lyrics_df,
+              output = word,
+              input = lyrics)
 ```
 
 ```outupt
@@ -124,17 +125,26 @@ lyrics_df %>%
 # … with 31 more rows
 ```
 The function `unnest_tokens` has three primary arguments: 
-1. tbl: the data frame
+1. tbl: the data frame to be tokenized
 2. output: the column to be created as string or symbol
 3. input: the column that gets split as string or symbol
 
-It also has several optional arguments. The default token is "words". It can 
-be set as "characters", "sentences", "ngrams", "lines", "paragraphs", etc. 
-`unnest_tokens` also convert tokens to lowercase and drop the input column if
-not specified. 
+It also has several optional arguments. The default token is "words". It can be set as 
+"characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
+converts tokens to lowercase and drops the input column if not specified. 
 
-The result of `unnest_tokens` is a tibble. In our case, there are 41 words in
-the lyrics and the line number of each word is labelled. 
+The result of `unnest_tokens` is a tibble. In our case, 41 words in the lyrics are broken 
+into 41 rows. The input column *lyrics* is removed; the new column, or the output column 
+*word*, is added; and the column *line* is kept unchanged.  
+
+Since the first argument of `unnest_tokens` is a data frame, we can also use pipes to send 
+a data frame to it and obtain the same results:
+```r
+lyrics_df %>% 
+  unnest_tokens(word, lyrics)
+```
+
+## 
 
 
 This is a lesson created via The Carpentries Workbench. It is written in
