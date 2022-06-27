@@ -317,7 +317,33 @@
 5     5 Yes, and how many times must the cannonballs fly
 6     6 Before they're forever banned? </code></pre>
 </div>
-<p>Next, we tokenize the textual data into units for analyses. Usually,</p>
+<p>Next step is tokenization, where we split the text into units, or tokens for further analyses. A word is a common token when analyzing textual data. We will use the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a>.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidytext</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lyrics_df</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">lyrics</span><span class="op">)</span></span></code></pre>
+</div>
+<pre class="outupt"><code># A tibble: 41 × 2
+    line word  
+   &lt;int&gt; &lt;chr&gt; 
+ 1     1 how   
+ 2     1 many  
+ 3     1 roads 
+ 4     1 must  
+ 5     1 a     
+ 6     1 man   
+ 7     1 walk  
+ 8     1 down  
+ 9     2 before
+10     2 you   
+# … with 31 more rows</code></pre>
+<p>The function <code>unnest_tokens</code> has three primary arguments: 1. tbl: the data frame 2. output: the column to be created as string or symbol 3. input: the column that gets split as string or symbol</p>
+<p>It also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> also convert tokens to lowercase and drop the input column if not specified.</p>
+<p>The result of <code>unnest_tokens</code> is a tibble. In our case, there are 41 words in the lyrics and the line number of each word is labelled.</p>
 <p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
 <p>What you need to know is that there are three sections required for a valid Carpentries lesson:</p>
 <ol style="list-style-type: decimal"><li>
@@ -349,7 +375,7 @@
 <h3 class="callout-title">Challenge 1: Can you do it?</h3>
 <div class="callout-content">
 <p>Rearrange the lines below to display the word(s) that appear over 600 times.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -374,7 +400,7 @@
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
