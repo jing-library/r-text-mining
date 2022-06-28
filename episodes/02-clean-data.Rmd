@@ -129,8 +129,7 @@ The function `unnest_tokens` has three primary arguments:
  2. output: the column to be created as string or symbol
  3. input: the column that gets split as string or symbol
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
+ 1. tbl: the data frame to be tokenized.
  2. `objectives` are the learning objectives for an episode displayed with
     the questions.
  3. `keypoints` are displayed at the end of the episode to reinforce the
