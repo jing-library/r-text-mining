@@ -234,7 +234,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Clean Up the Text</h1>
-        <p> Last updated on 2022-06-27 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-06-28 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -342,7 +342,13 @@
 10     2 you   
 # … with 31 more rows</code></pre>
 <p>The function <code>unnest_tokens</code> has three primary arguments: 1. tbl: the data frame to be tokenized 2. output: the column to be created as string or symbol 3. input: the column that gets split as string or symbol</p>
-<p>It also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified.</p>
+<ol style="list-style-type: decimal"><li>
+<code>questions</code> are displayed at the beginning of the episode to prime the learner for the content.</li>
+<li>
+<code>objectives</code> are the learning objectives for an episode displayed with the questions.</li>
+<li>
+<code>keypoints</code> are displayed at the end of the episode to reinforce the objectives.</li>
+</ol><p>It also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified.</p>
 <p>The result of <code>unnest_tokens</code> is a tibble. In our case, 41 words in the lyrics are broken into 41 rows. The input column <em>lyrics</em> is removed; the new column, or the output column <em>word</em>, is added; and the column <em>line</em> is kept unchanged.</p>
 <p>Since the first argument of <code>unnest_tokens</code> is a data frame, we can also use pipes to send a data frame to it and obtain the same results:</p>
 <div class="codewrapper sourceCode" id="cb7">
@@ -393,7 +399,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -435,7 +441,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -514,7 +520,7 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/02-clean-data.html",
   "identifier": "https://jing-library.github.io/r-text-mining/02-clean-data.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-06-27",
+  "dateModified": "2022-06-28",
   "datePublished": "2022-06-28"
 }
 
