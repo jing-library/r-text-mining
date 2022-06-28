@@ -129,6 +129,13 @@ The function `unnest_tokens` has three primary arguments:
  2. output: the column to be created as string or symbol
  3. input: the column that gets split as string or symbol
 
+ 1. `questions` are displayed at the beginning of the episode to prime the
+    learner for the content.
+ 2. `objectives` are the learning objectives for an episode displayed with
+    the questions.
+ 3. `keypoints` are displayed at the end of the episode to reinforce the
+    objectives.
+    
 It also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
 converts tokens to lowercase and drops the input column if not specified. 
