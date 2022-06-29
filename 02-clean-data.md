@@ -125,15 +125,9 @@ unnest_tokens(tbl = lyrics_df,
 # … with 31 more rows
 ```
 The function `unnest_tokens` has three primary arguments: 
- 1. tbl: the data frame to be tokenized
- 2. output: the column to be created as string or symbol
- 3. input: the column that gets split as string or symbol
-
  1. tbl: the data frame to be tokenized.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+ 2. output: the column to be created as string or symbol.
+ 3. input: the column that gets split as string or symbol.
     
 It also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
