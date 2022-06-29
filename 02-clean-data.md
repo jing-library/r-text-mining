@@ -23,7 +23,7 @@ Depending on how it is organized, data can be grouped into two categories:
 **structured data** and **unstructured data**. **Structured data** is data that has 
 been predefined and formatted to a tabular format with rows and columns, such as 
 data stored in a relational database, or membership information housed in an Excel 
-spreadsheet. While **unformatted data** does not have a predefined data format.
+spreadsheet. While **unstructured data** does not have a predefined data format.
 It comes in various formats, for example, email, presentation, images, etc. Another
 category is a blend between structured and unstructured data formats, which is
 called **semi-structured data**. It refers to what would normally be considered 
@@ -42,9 +42,9 @@ branded by [Hadley Wickham](https://hadley.nz/) and developed the package
 `tidytext` for text mining.
 
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
-frame, where a **token** is a meaningful unit of text, such as a word, a sentence, 
-or a paragraph, that we are interested in analyzing. **Tokenization** is a process 
-of splitting text into tokens. 
+frame, where a **token** is a semantically meaningful unit of text, such as a word, 
+a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
+is a process of segmenting running text into a list of tokens. 
 
 Tidy data sets allow manipulation with a standard set of "tidy" tools, including popular 
 packages such as dplyr ([Wickham and Francois 2016](https://www.tidytextmining.com/references.html#ref-R-dplyr)), 
@@ -124,7 +124,8 @@ unnest_tokens(tbl = lyrics_df,
 10     2 you   
 # … with 31 more rows
 ```
-The function `unnest_tokens` has three primary arguments: 
+The function `unnest_tokens` has three primary arguments:
+
  1. tbl: the data frame to be tokenized.
  2. output: the column to be created as string or symbol.
  3. input: the column that gets split as string or symbol.
