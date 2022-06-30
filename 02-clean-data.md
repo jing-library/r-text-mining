@@ -132,7 +132,8 @@ The function `unnest_tokens` has three primary arguments:
     
 It also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
-converts tokens to lowercase and drops the input column if not specified. 
+converts tokens to lowercase and drops the input column if not specified. Punctuations
+are stripped.
 
 The result of `unnest_tokens` is a tibble. In our case, 41 words in the lyrics are broken 
 into 41 rows. The input column *lyrics* is removed; the new column, or the output column 
