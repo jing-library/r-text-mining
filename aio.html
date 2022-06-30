@@ -412,7 +412,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-02-clean-data"><p>Content from <a href="02-clean-data.html">Clean Up the Text</a></p>
 <hr>
-<p> Last updated on 2022-06-29 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-30 | <a href="https://github.com/jing-library/r-text-mining//edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -528,7 +528,7 @@ any links that you are not going to use.
 <li>output: the column to be created as string or symbol.</li>
 <li>input: the column that gets split as string or symbol.</li>
 </ol>
-<p>It also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified.</p>
+<p>It also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified. Punctuations are stripped.</p>
 <p>The result of <code>unnest_tokens</code> is a tibble. In our case, 41 words in the lyrics are broken into 41 rows. The input column <em>lyrics</em> is removed; the new column, or the output column <em>word</em>, is added; and the column <em>line</em> is kept unchanged.</p>
 <p>Since the first argument of <code>unnest_tokens</code> is a data frame, we can also use pipes to send a data frame to it and obtain the same results:</p>
 <div class="codewrapper sourceCode" id="cb7">
@@ -850,8 +850,8 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/aio.html",
   "identifier": "https://jing-library.github.io/r-text-mining/aio.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-06-29",
-  "datePublished": "2022-06-29"
+  "dateModified": "2022-06-30",
+  "datePublished": "2022-06-30"
 }
 
   </script><script>
