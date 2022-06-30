@@ -50,6 +50,7 @@ if( !("installr" %in% installed.packages()) ){install.packages("installr")}
 installr::updateR(TRUE)
 ```
 #### If you don't have R and RStudio installed,
+
 1. Download R from the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
 1. Run the `.exe` file that was just downloaded.
 1. Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download).
@@ -69,6 +70,7 @@ represent version numbers).
 1. To check the version of R you are using, start RStudio and the first thing that appears on the terminal indicates the version of R you are running. Alternatively, you can type `sessionInfo()`, which will also display which version of R you are running. Go on the [CRAN website](https://cran.r-project.org/bin/macosx/) and check whether a more recent version is available. If so, please download and install it. In any case, make sure you have at least R 3.2.
 
 #### If you don’t have R and RStudio installed
+
 1. Download R from the [CRAN website](http://cran.r-project.org/bin/macosx/).
 1. Select the `.pkg` file for the latest R version.
 1. Double click on the downloaded file to install R.
