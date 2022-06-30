@@ -81,6 +81,14 @@ represent version numbers).
 1. Double click the file to install RStudio.
 1. Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.
 
+
+ 1. `questions` are displayed at the beginning of the episode to prime the
+    learner for the content.
+ 2. `objectives` are the learning objectives for an episode displayed with
+    the questions.
+ 3. `keypoints` are displayed at the end of the episode to reinforce the
+    objectives.
+
 :::::::::::::::::::::::::
 
 
