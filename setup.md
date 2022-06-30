@@ -35,6 +35,7 @@ the instructions to install `tidyverse`.
 ### Windows
 
 #### If you already have R and RStudio installed,
+
 1. Open RStudio, and click on "Help" > "Check for updates". If a new version is 
 available, quit RStudio, and download the latest version for RStudio.
 1. To check which version of R you are using, start RStudio and the first thing 
