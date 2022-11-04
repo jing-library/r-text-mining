@@ -152,16 +152,16 @@ The [Project Gutenberg](https://www.gutenberg.org/) is a collection of free elec
 or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
 developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)), 
 allows users to download public domain works from the Project Gutenberg collection as well as 
-search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [record in project Gutenberg for The Time Machine](https://www.gutenberg.org/ebooks/35) The Time Machine, [record in project Gutenberg for The War of the Worlds](https://www.gutenberg.org/ebooks/36)The War of the Worlds, and [record in project Gutenberg for The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)The Invisible Man. 
+search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
  
 
 
-\\\
+```r
 library(gutenbergr)
 
 hgwells <- gutenberg_download(c(35, 36, 5230))
 
-\\\
+```
 
 ## Word Frequencies
 
