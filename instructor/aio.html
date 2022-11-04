@@ -399,7 +399,15 @@
 </section><section id="project-gutenberg-collection-and-the-workflow-of-text-analyses"><h2 class="section-heading">Project Gutenberg collection and the workflow of text analyses<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection-and-the-workflow-of-text-analyses"></a>
 </h2>
 <hr class="half-width">
-<p>The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenbery</a> is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata.</p>
+<p>The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">record in project Gutenberg for The Time Machine</a> The Time Machine, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">record in project Gutenberg for The War of the Worlds</a>The War of the Worlds, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">record in project Gutenberg for The Invisilbe Man</a>The Invisible Man.</p>
+<p>\<br>
+library(gutenbergr)</p>
+<p>hgwells &lt;- gutenberg_download(c(35, 36, 5230))</p>
+<p>\<br></p>
+</section><section id="word-frequencies"><h2 class="section-heading">Word Frequencies<a class="anchor" aria-label="anchor" href="#word-frequencies"></a>
+</h2>
+<hr class="half-width">
+<p>One of the first steps used in text analysis, is word frequency.</p>
 <p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.html" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
 <p>What you need to know is that there are three sections required for a valid Carpentries lesson:</p>
 <ol style="list-style-type: decimal">
@@ -418,7 +426,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -457,7 +465,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -500,7 +508,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -769,7 +777,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -801,7 +809,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -831,7 +839,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
