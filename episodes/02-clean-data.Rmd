@@ -169,17 +169,13 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ## Challenge 1: Can you do it?
 
-Can you use unnest_tokens with the H.G. Wells novels?
+How can we use unnest_tokens with the H.G. Wells novels?
 
 ```r
 tidy_books
   filter(n > 600)
   mutate(word = reorder(word, n))
   count(word, sort = TRUE) 
-  ggplot(aes(word, n)) +
-	  geom_col() +
-	  xlab(NULL) +
-	  coord_flip()
 ```
 
 :::::::::::::::::::::::: solution 
@@ -200,7 +196,7 @@ tidy_hgwells <- hgwells %>%
 
 ## Word Frequencies
 
-One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common works called stop words such as "the", "is", "are" amoung others in English. We can remove (stop_words) with an anti_join(). Using the H.G. Wells books. 
+One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove (stop_words) with an anti_join(). Using the H.G. Wells books let's look at how we could run it in R. 
 
 
 ```r
