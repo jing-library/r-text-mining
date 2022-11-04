@@ -160,8 +160,8 @@ search and filter works by author, title, language, subjects, and other metadata
 library(gutenbergr)
 
 hgwells <- gutenberg_download(c(35, 36, 5230))
-
 ```
+
 ```outupt
 # A tibble: 41 × 2
     line NOT RIGHT  
@@ -178,7 +178,7 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 10     2 you   
 # … with 31 more rows
 ```
-
+WHY is this NOT working? 
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
