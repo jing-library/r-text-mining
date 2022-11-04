@@ -1,7 +1,7 @@
 ---
 title: "Clean the Text"
 teaching: 0
-exercises: 0
+exercises: 1
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -163,7 +163,7 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -200,10 +200,14 @@ tidy_hgwells <- hgwells %>%
 
 ## Word Frequencies
 
-One of the first steps used in text analysis, is word frequency. In order to count the words, we first need to remove extremely common works called stop words such as "the", "is", "are" and others in English. We can remove (stop_words) with an anti_join(). 
+One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common works called stop words such as "the", "is", "are" amoung others in English. We can remove (stop_words) with an anti_join(). Using the H.G. Wells books. 
 
 
-
+```r
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
+```
 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
