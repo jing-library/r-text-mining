@@ -154,8 +154,6 @@ developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(d
 allows users to download public domain works from the Project Gutenberg collection as well as 
 search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
  
-
-
 ```r
 library(gutenbergr)
 
