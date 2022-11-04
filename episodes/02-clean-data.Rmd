@@ -163,6 +163,39 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ```
 
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Can you do it?
+
+Can you use unnest_tokens with the H.G. Wells novels?
+
+```r
+tidy_books
+  filter(n > 600)
+  mutate(word = reorder(word, n))
+  count(word, sort = TRUE) 
+  ggplot(aes(word, n)) +
+	  geom_col() +
+	  xlab(NULL) +
+	  coord_flip()
+```
+
+:::::::::::::::::::::::: solution 
+
+## Output
+
+```r
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text)
+```
+```output
+[1] "This new lesson looks good"
+```
+
+:::::::::::::::::::::::::::::::::
+
+
+
 ## Word Frequencies
 
 One of the first steps used in text analysis, is word frequency. 
