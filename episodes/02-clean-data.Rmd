@@ -148,13 +148,24 @@ lyrics_df %>%
 
 ## Project Gutenberg collection and the workflow of text analyses
 
-The [Project Gutenbery](https://www.gutenberg.org/) is a collection of free electronic books, 
+The [Project Gutenberg](https://www.gutenberg.org/) is a collection of free electronic books, 
 or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
 developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)), 
 allows users to download public domain works from the Project Gutenberg collection as well as 
-search and filter works by author, title, language, subjects, and other metadata. 
+search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [record in project Gutenberg for The Time Machine](https://www.gutenberg.org/ebooks/35) The Time Machine, [record in project Gutenberg for The War of the Worlds](https://www.gutenberg.org/ebooks/36)The War of the Worlds, and [record in project Gutenberg for The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)The Invisible Man. 
+ 
 
 
+\\\
+library(gutenbergr)
+
+hgwells <- gutenberg_download(c(35, 36, 5230))
+
+\\\
+
+## Word Frequencies
+
+One of the first steps used in text analysis, is word frequency. 
 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
