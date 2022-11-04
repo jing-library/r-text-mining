@@ -1,7 +1,7 @@
 ---
 title: "Clean the Text"
 teaching: 0
-exercises: 0
+exercises: 1
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -154,18 +154,26 @@ developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(d
 allows users to download public domain works from the Project Gutenberg collection as well as 
 search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
  
-
-
 ```r
 library(gutenbergr)
 
 hgwells <- gutenberg_download(c(35, 36, 5230))
-
 ```
+
+WHY is this NOT working? 
+
+
 
 ## Word Frequencies
 
-One of the first steps used in text analysis, is word frequency. 
+One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove (stop_words) with an anti_join(). Using the H.G. Wells books let's look at how we could run it in R. 
+
+
+```r
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
+```
 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
