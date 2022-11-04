@@ -162,7 +162,7 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ```outupt
 # A tibble: 41 × 2
-    line NOT RIGHT  
+    line word  
    <int> <chr> 
  1     1 how   
  2     1 many  
