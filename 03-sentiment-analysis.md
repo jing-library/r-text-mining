@@ -6,7 +6,8 @@ exercises: 0
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- TODO
+- What is sentment analysis?
+- How can text analysis evaluate emotion?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -108,6 +109,8 @@ dynamic reports with {knitr}, so we now use mathjax to describe this:
 Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
+
+-
 
 - Use `.md` files for episodes when you want static content
 - Use `.Rmd` files for episodes when you need to generate output
