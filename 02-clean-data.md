@@ -1,5 +1,5 @@
 ---
-title: "Clean Up the Text"
+title: "Clean the Text"
 teaching: 0
 exercises: 0
 ---
@@ -12,7 +12,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Clean up the example documents with the package tidytext
+- Clean the example documents with the package tidytext
 - Calculate the word frequencies in the example documents
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
