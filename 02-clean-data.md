@@ -160,13 +160,9 @@ library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
 ```
 
-WHY is this NOT working? 
-
-
-
 ## Word Frequencies
 
-One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove (stop_words) with an anti_join(). Using the H.G. Wells books let's look at how we could run it in R. 
+One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove. Using the H.G. Wells books let's look at how we could run it in R. 
 
 
 ```r
