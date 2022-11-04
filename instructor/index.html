@@ -148,7 +148,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="01-introduction.html">1. Using RMarkdown</a>
+        <a href="02-clean-data.html">1. Clean the Text</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -157,7 +157,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="02-clean-data.html">2. Clean the Text</a>
+        <a href="03-sentiment-analysis.html">2. Sentiment Analysis</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -166,7 +166,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03-sentiment-analysis.html">3. Sentiment Analysis</a>
+        <a href="04-introduction.html">3. Using RMarkdown</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -213,11 +213,11 @@
         <!-- START: inst/pkgdown/templates/content-syllabus.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/02-clean-data.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/01-introduction.html" rel="next">Next: Using RMarkdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/02-clean-data.html" rel="next">Next: Clean the Text... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
@@ -234,28 +234,28 @@ any links that you are not going to use.
 <span class="visually-hidden">Duration: </span>00:00
 </td>
 <td>
- 1. <a href="01-introduction.html">Using RMarkdown</a>
-</td>
-<td>
-How do you write a lesson using R Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
-</td>
-</tr><tr><td>
-<span class="visually-hidden">Duration: </span>00:12
-</td>
-<td>
- 2. <a href="02-clean-data.html">Clean the Text</a>
+ 1. <a href="02-clean-data.html">Clean the Text</a>
 </td>
 <td>
 What is clean text?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00:12
+<span class="visually-hidden">Duration: </span>00:00
 </td>
 <td>
- 3. <a href="03-sentiment-analysis.html">Sentiment Analysis</a>
+ 2. <a href="03-sentiment-analysis.html">Sentiment Analysis</a>
 </td>
 <td>
 TODO
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>00:00
+</td>
+<td>
+ 3. <a href="04-introduction.html">Using RMarkdown</a>
+</td>
+<td>
+How do you write a lesson using R Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00:12
@@ -296,7 +296,7 @@ any links that you are not going to use.
   Windows
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="if-you-already-have-r-and-rstudio-installed">If you already have R and RStudio installed,<a class="anchor" aria-label="anchor" href="#if-you-already-have-r-and-rstudio-installed"></a></h4>
@@ -330,7 +330,7 @@ any links that you are not going to use.
   MacOS
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="if-you-already-have-r-and-rstudio-installed-1">If you already have R and RStudio installed<a class="anchor" aria-label="anchor" href="#if-you-already-have-r-and-rstudio-installed-1"></a></h4>
@@ -362,7 +362,7 @@ any links that you are not going to use.
   Linux
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Follow the instructions for your distribution from <a href="https://cloud.r-project.org/bin/linux" class="external-link">CRAN</a>, they provide information to get the most recent version of R for common distributions. For most distributions, you could use your package manager (e.g., for Debian/Ubuntu run <code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we don’t recommend this approach as the versions provided by this approach are usually out of date. In any case, make sure you have at least R 3.2.</li>
 <li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">RStudio download page</a>.</li>
@@ -380,7 +380,7 @@ any links that you are not going to use.
   For everyone
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><strong>After installing R and RStudio, you need to install the <code>tidyverse</code>, <code>tidytext</code>, and <code>gutenbergr</code> packages.</strong></p>
 <ul><li>After starting RStudio, at the console type: <code>install.packages("tidyverse")</code> followed by the enter key. Once this has installed, type <code>install.packages("tidytext")</code> followed by the enter key. Once this has installed, type <code>install.packages("gutenbergr")</code> followed by the enter key. All three packages should now be installed.</li>
@@ -393,11 +393,11 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/02-clean-data.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/01-introduction.html" rel="next">Next: Using RMarkdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/02-clean-data.html" rel="next">Next: Clean the Text... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
