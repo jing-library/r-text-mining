@@ -162,7 +162,22 @@ library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ```
-Help
+```outupt
+# A tibble: 41 × 2
+    line NOT RIGHT  
+   <int> <chr> 
+ 1     1 how   
+ 2     1 many  
+ 3     1 roads 
+ 4     1 must  
+ 5     1 a     
+ 6     1 man   
+ 7     1 walk  
+ 8     1 down  
+ 9     2 before
+10     2 you   
+# … with 31 more rows
+```
 
 
 ::::::::::::::::::::::::::::::::::::: challenge 
