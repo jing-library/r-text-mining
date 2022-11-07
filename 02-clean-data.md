@@ -167,12 +167,7 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 How can we use unnest_tokens with the H.G. Wells novels?
 
-```r
-tidy_books
-  filter(n > 600)
-  mutate(word = reorder(word, n))
-  count(word, sort = TRUE) 
-```
+
 
 :::::::::::::::::::::::: solution 
 
@@ -183,7 +178,7 @@ tidy_hgwells <- hgwells %>%
   unnest_tokens(word, text)
 ```
 ```output
-[1] "This new lesson looks good"
+TEST TEST TEST NEED TO ADD
 ```
 
 :::::::::::::::::::::::::::::::::
