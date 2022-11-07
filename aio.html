@@ -303,7 +303,7 @@
 <p>Depending on how it is organized, data can be grouped into two categories: <strong>structured data</strong> and <strong>unstructured data</strong>. <strong>Structured data</strong> is data that has been predefined and formatted to a tabular format with rows and columns, such as data stored in a relational database, or membership information housed in an Excel spreadsheet. While <strong>unstructured data</strong> does not have a predefined data format. It comes in various formats, for example, email, presentation, images, etc. Another category is a blend between structured and unstructured data formats, which is called <strong>semi-structured data</strong>. It refers to what would normally be considered unstructured data, but that also has metadata that identifies certain characteristics. Some common examples of semi-structured data are XML, JSON, and HTML files.</p>
 <p><strong>Text mining</strong>, or <strong>text analytics</strong>, is the process of exploring and analyzing unstructured or semi-structured text data to identify key concepts, pattens, relationships, or other attributions of the data.</p>
 <p>R is powerful processing structured data, or tabular data, where data display in columns or tables. R can also handle unstructured and semi-structured data such as text. Julia Silge and David Robinson followed the <a href="https://doi.org/10.18637/jss.v059.i10" class="external-link">tidy data principles</a> branded by <a href="https://hadley.nz/" class="external-link">Hadley Wickham</a> and developed the package <code>tidytext</code> to analyze textual data. This lesson will focus on using the package <code>tidytext</code> for text mining.</p>
-<p>In the package <code>tidytext</code>, <strong>tidy text</strong> is defined as a one-token-per-row data frame, where a <strong>token</strong> is a semantically meaningful unit of text, such as a word, a sentence, or a paragraph, that we are interested in analyzing. <strong>Tokenization</strong> is a process of segmenting running text into a list of tokens.</p>
+<p>In the package <code>tidytext</code>, <strong>tidy text</strong> is defined as a one-token-per-row data frame, where a <strong>token</strong> is a semantically meaningful unit of text, such as a word, a sentence, or a paragraph, that we are interested in analyzing. <strong>Tokenization</strong> is a process of segmenting running text into a list of tokens. The result of tokenization is a table with one-token-per-row.</p>
 <p>Tidy data sets allow manipulation with a standard set of “tidy” tools, including popular packages such as dplyr (<a href="https://www.tidytextmining.com/references.html#ref-R-dplyr" class="external-link">Wickham and Francois 2016</a>), tidyr (<a href="https://www.tidytextmining.com/references.html#ref-R-tidyr" class="external-link">Wickham 2016</a>), ggplot2 (<a href="https://www.tidytextmining.com/references.html#ref-R-ggplot2" class="external-link">Wickham 2009</a>), and broom (<a href="https://www.tidytextmining.com/references.html#ref-R-broom" class="external-link">Robinson 2017</a>). These packages extend the capacities of <code>tidytext</code> of exploring and visualizing textual data. Users can transit fluidly between these packages by keeping the input and output in tidy formats.</p>
 </section><section id="token-and-tokenization"><h2 class="section-heading">Token and Tokenization<a class="anchor" aria-label="anchor" href="#token-and-tokenization"></a>
 </h2>
@@ -960,7 +960,7 @@ any links that you are not going to use.
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.7" class="external-link">sandpaper (0.10.7)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.8" class="external-link">varnish (0.2.8)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -988,23 +988,29 @@ any links that you are not going to use.
 
   </script><script>
 		feather.replace();
-	</script><!-- Matomo --><script>
-          var _paq = window._paq = window._paq || [];
-          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-          _paq.push(["setDomains", ["*.preview.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io", "*.carpentries.github.io"]]);
-          _paq.push(["setDoNotTrack", true]);
-          _paq.push(["disableCookies"]);
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-              var u="https://carpentries.matomo.cloud/";
-              _paq.push(['setTrackerUrl', u+'matomo.php']);
-              _paq.push(['setSiteId', '1']);
-              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-              g.async=true; g.src='https://cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script><!-- End Matomo Code -->
+	</script><!-- Matomo
+    2022-11-07: we have gotten a notification that we have an overage for our
+    tracking and I'm pretty sure this has to do with Workbench usage.
+    Considering that I am not _currently_ using this tracking because I do not
+    yet know how to access the data, I am turning this off for now.
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+    _paq.push(["setDomains", ["*.preview.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io", "*.carpentries.github.io"]]);
+    _paq.push(["setDoNotTrack", true]);
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+          var u="https://carpentries.matomo.cloud/";
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', '1']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.async=true; g.src='https://cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+  </script>
+  End Matomo Code -->
 </body>
 </html><!-- END:   inst/pkgdown/templates/layout.html-->
 
