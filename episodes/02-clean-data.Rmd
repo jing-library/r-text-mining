@@ -165,17 +165,13 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 ## Challenge 1: Can you do it?
 
-Rearrange the lines below to display the word(s) that appear over 600 times.
+How can we use unnest_tokens with the H.G. Wells novels?
 
 ```r
 tidy_books
   filter(n > 600)
   mutate(word = reorder(word, n))
   count(word, sort = TRUE) 
-  ggplot(aes(word, n)) +
-	  geom_col() +
-	  xlab(NULL) +
-	  coord_flip()
 ```
 
 :::::::::::::::::::::::: solution 
@@ -183,14 +179,8 @@ tidy_books
 ## Output
 
 ```r
-tidy_books %>%
-  count(word, sort = TRUE) %>%
-  filter(n > 600) %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(word, n)) +
-  geom_col() +
-  xlab(NULL) +
-  coord_flip()
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text)
 ```
 ```output
 [1] "This new lesson looks good"
@@ -198,14 +188,6 @@ tidy_books %>%
 
 :::::::::::::::::::::::::::::::::
 
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution 
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
