@@ -160,6 +160,56 @@ library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
 ```
 
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Can you do it?
+
+Rearrange the lines below to display the word(s) that appear over 600 times.
+
+```r
+tidy_books
+  filter(n > 600)
+  mutate(word = reorder(word, n))
+  count(word, sort = TRUE) 
+  ggplot(aes(word, n)) +
+	  geom_col() +
+	  xlab(NULL) +
+	  coord_flip()
+```
+
+:::::::::::::::::::::::: solution 
+
+## Output
+
+```r
+tidy_books %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 600) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+```
+```output
+[1] "This new lesson looks good"
+```
+
+:::::::::::::::::::::::::::::::::
+
+
+## Challenge 2: how do you nest solutions within challenge blocks?
+
+:::::::::::::::::::::::: solution 
+
+You can add a line with at least three colons and a `solution` tag.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
 ## Word Frequencies
 
 One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove. Using the H.G. Wells books let's look at how we could run it in R. 
