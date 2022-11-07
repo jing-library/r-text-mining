@@ -44,7 +44,8 @@ branded by [Hadley Wickham](https://hadley.nz/) and developed the package
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
 frame, where a **token** is a semantically meaningful unit of text, such as a word, 
 a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
-is a process of segmenting running text into a list of tokens. 
+is a process of segmenting running text into a list of tokens. The result of tokenization
+is a table with one-token-per-row.
 
 Tidy data sets allow manipulation with a standard set of "tidy" tools, including popular 
 packages such as dplyr ([Wickham and Francois 2016](https://www.tidytextmining.com/references.html#ref-R-dplyr)), 
