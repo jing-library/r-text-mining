@@ -101,6 +101,12 @@ Next step is tokenization, where we split the text into units, or tokens for fur
 analyses. We will use the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
 to break the lyrics into words and strip punctuations. 
 
+The function `unnest_tokens` has three primary arguments:
+
+ 1. tbl: the data frame to be tokenized.
+ 2. output: the column to be created as string or symbol.
+ 3. input: the column that gets split as string or symbol.
+
 ```r
 library(tidytext)
 
@@ -125,16 +131,12 @@ unnest_tokens(tbl = lyrics_df,
 10     2 you   
 # … with 31 more rows
 ```
-The function `unnest_tokens` has three primary arguments:
 
- 1. tbl: the data frame to be tokenized.
- 2. output: the column to be created as string or symbol.
- 3. input: the column that gets split as string or symbol.
-    
-It also has several optional arguments. The default token is "words". It can be set as 
+Beyond these three primary arguments, the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
+also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
 converts tokens to lowercase and drops the input column if not specified. Punctuations
-are stripped.
+are stripped. 
 
 The result of `unnest_tokens` is a tibble. In our case, 41 words in the lyrics are broken 
 into 41 rows. The input column *lyrics* is removed; the new column, or the output column 
