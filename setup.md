@@ -5,8 +5,9 @@ title: Setup
 ## Data Sets
 
 This lesson uses the data sets from the [Gutenberg Project](https://www.gutenberg.org/)
-collection. We will install the package `gutenbergr`, download the books and metadata 
-in the class. 
+collection, which is a collection of text in public domain. It is a good source to
+practice text mining techniques. We will install the package `gutenbergr`, download 
+the books and metadata in the class. 
 
 
 ## Software Setup
