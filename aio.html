@@ -300,7 +300,7 @@
 </div>
 </div>
 </div>
-<section id="about-text-mining-and-text-analysis"><h2 class="section-heading">About Text Mining and Text Analysis<a class="anchor" aria-label="anchor" href="#about-text-mining-and-text-analysis"></a>
+<section id="text-mining-and-text-analysis"><h2 class="section-heading">Text Mining and Text Analysis<a class="anchor" aria-label="anchor" href="#text-mining-and-text-analysis"></a>
 </h2>
 <hr class="half-width">
 <p>Depending on how it is organized, data can be grouped into two categories: <strong>structured data</strong> and <strong>unstructured data</strong>. <strong>Structured data</strong> is data that has been predefined and formatted to a tabular format with rows and columns, such as data stored in a relational database, or membership information housed in an Excel spreadsheet. While <strong>unstructured data</strong> does not have a predefined data format. It comes in various formats, for example, email, presentation, images, etc. Another category is a blend between structured and unstructured data formats, which is called <strong>semi-structured data</strong>. It refers to what would normally be considered unstructured data, but that also has metadata that identifies certain characteristics. Some common examples of semi-structured data are XML, JSON, and HTML files.</p>
@@ -395,7 +395,7 @@
 10     2 you   
 # … with 31 more rows</code></pre>
 <p>The result of <code>unnest_tokens</code> is a tibble. In our case, the lyrics is split into 41 words with each word takes a row. The input column <em>lyrics</em> is removed; the new column, or the output column <em>word</em>, is added; and the column <em>line</em> is kept unchanged.</p>
-<p>Beyond these three primary arguments, the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a> also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “ngrams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified. Punctuations are stripped druing the tokenization.</p>
+<p>Beyond these three primary arguments, the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a> also has several optional arguments. The default token is “words”. It can be set as “characters”, “sentences”, “n-grams”, “lines”, “paragraphs”, etc. <code>unnest_tokens</code> automatically converts tokens to lowercase and drops the input column if not specified. Punctuations are stripped during the tokenization. Converting text to lower case and removing punctuations are also common text preprocess or cleaning techniques. Since the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a> can fulfill these tasks, we do not need to perform them separately.</p>
 <p>Since the first argument of <code>unnest_tokens</code> is a data frame, we can also use pipes to send a data frame to it and obtain the same results:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -406,10 +406,44 @@
 </div>
 </div>
 <div class="section level3">
-<h3 id="project-gutenberg-collection">Project Gutenberg collection<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection"></a>
+<h3 id="stop-words">Stop Words<a class="anchor" aria-label="anchor" href="#stop-words"></a>
 </h3>
-<p>The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to download the text for each novel using the function gutenberg_download() . Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a>.</p>
+<p>When analyzing text, usually, some extremely common words are of little value in serving the research purposes. We want to exclude them from the textual data entirely. These words are called <strong>stop words</strong>. Removing <strong>stop word</strong> is one of the common text preprocessing techniques, which allows researchers to focus on the important words in the textual data instead. There is no single universal list of stop words used by all text analysis tools, nor any agreed upon rules for identifying stop words, and indeed not all tools even use such a list. Therefore, any group of words can be chosen as the stop words for a given purpose.</p>
+<p>R package <code>stopwords</code> provides stop word lists for multiple languages and sources. It is easily extended. The package <code>tidytext</code> also offers a data frame, <em>stop_words</em>, to host English stop words from three lexicons - onix, SMART, and snowball, with non-ASCII characters removed. The data frame <em>stop_words</em> includes 1,149 stop words. We use it in this lesson when excluding stop words from our data sets.</p>
+<p>We can use the function <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join" class="external-link">anti_join</a> to exclude stop words from the textural data set. For example:</p>
 <div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lyrics_df</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">lyrics</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">anti_join</span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span></code></pre>
+</div>
+<pre class="outupt"><code># A tibble: 14 × 2
+    line word       
+   &lt;int&gt; &lt;chr&gt;      
+ 1     1 roads      
+ 2     1 walk       
+ 3     2 call       
+ 4     3 seas       
+ 5     3 white      
+ 6     3 dove       
+ 7     3 sail       
+ 8     4 sleeps     
+ 9     4 sand       
+10     5 times      
+11     5 cannonballs
+12     5 fly        
+13     6 forever    
+14     6 banned</code></pre>
+<p>After removing the stop words, only 14 words left in the lyrics.</p>
+</div>
+</section><section id="project-gutenberg-collection"><h2 class="section-heading">Project Gutenberg Collection<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection"></a>
+</h2>
+<hr class="half-width">
+<p>In terms of data gathering, we can create our own data sets or use existing textual datasets. In this lesson, we will use the <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> as the source of our data sets. The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a>is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID is one of the most important metadata, which we can use to download the text for each novel.</p>
+<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a> as examples.</p>
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -438,7 +472,7 @@
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -454,12 +488,11 @@
 </div>
 </div>
 </div>
-</div>
 </section><section id="word-frequencies"><h2 class="section-heading">Word Frequencies<a class="anchor" aria-label="anchor" href="#word-frequencies"></a>
 </h2>
 <hr class="half-width">
 <p>One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as “the”, “have”, “is”, “are” amoung others in English. We can remove. Using the H.G. Wells books let’s look at how we could run it in R.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -486,7 +519,7 @@
 </h3>
 <div class="callout-content">
 <p>Rearrange the lines below to display the word(s) that appear over 600 times.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -511,7 +544,7 @@
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -818,7 +851,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -848,7 +881,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
