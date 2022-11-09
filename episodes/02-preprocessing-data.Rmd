@@ -342,14 +342,14 @@ tidy_time_machine %>%
   geom_col()+
   theme_bw()
 ```
-```output
+The output is a column chart:
 ![Column chart for word frequency](word_frequency_bar.png)
-```
 
 
-```output
+
+
 ![Wordcloud using the package wordcloud](wordcloud.png)
-```
+
 
 
 
