@@ -309,7 +309,7 @@ tidy_time_machine %>%
   count(word, sort = TRUE)
 ```
 
-```output
+```r
 # A tibble: 4,172 × 2
    word          n
    <chr>     <int>
@@ -326,7 +326,9 @@ tidy_time_machine %>%
 # … with 4,162 more rows
 # ℹ Use `print(n = ...)` to see more rows
 ```
-
+```output
+![Wordcloud using the package wordcloud](wordcloud.JPG)
+```
 After removing stop words, the novel *The Time Machine* contains 11,268 words, where 4,172 are unique. The word *time* 
 is most used word and it appears 207 times in the novel.
 
