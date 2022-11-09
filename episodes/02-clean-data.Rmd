@@ -41,33 +41,26 @@ computational methods to explore and analyze unstructured text data.
 A simplified process of a typical text mining study can include four steps: data gather, 
 text preprocessing or cleaning, text analysis, and integration with the study. 
 
-In terms of data gathering, we may create a dataset, which is called
-a corpus, or we may select an existing data for mining. After a corpus
-is generated, usually, we need to preprocess or clean it to get it ready
-for analysis. Common techniques used for preparing a corpus include converting
-text to lower case, removing punctuation and non-alphanumeric character,
+In terms of data gathering, we may create a dataset or select existing datasets. 
+After a dataset is generated, usually, we need to preprocess or clean the text to 
+get it ready for analysis. Common techniques used for preparing a dataset include 
+converting text to lower case, removing punctuation and non-alphanumeric character,
 remove stopwords, tokenization, tagging parts of speech, word replacement,
-stemming and lemmatization, etc. Next step will be text mining. Some common
-text mining methods are topic modelling, sentiment analysis, term frequency
-and TD-IDF, and collocation analysis. We will then integrate the findings
-from text mining to the study. Various text preprocessing techniques and text
-mining methods serve different research purposes. This lesson is to demo how to
-use the R package `tidytext` to preprocess text data from an existing dataset to
+stemming and lemmatization, etc. Next step will be text mining or analysis. Some 
+common text mining methods are topic modelling, sentiment analysis, term frequency
+and TD-IDF, and collocation analysis. We will then integrate the findings from text 
+mining to the study. Various text preprocessing techniques and text mining methods 
+serve different research purposes. This lesson is to demo how to use the 
+R package `tidytext` to preprocess text data from an existing dataset to
 perform a sentiment analysis.
 
-## Using R Package `tidytext` in Text Mining
+## Preprocess and Clean Text
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
 Julia Silge and David Robinson followed the [tidy data principles](https://doi.org/10.18637/jss.v059.i10) 
 branded by [Hadley Wickham](https://hadley.nz/) and developed the package 
-`tidytext` to analyze textual data. 
-
-In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
-frame, where a **token** is a semantically meaningful unit of text, such as a word, 
-a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
-is a process of segmenting running text into a list of tokens to create a table 
-with one-token-per-row. 
+`tidytext` to preprocess and analyze textual data. 
 
 Tidy data sets allow manipulation with a standard set of "tidy" tools, including popular 
 packages such as dplyr ([Wickham and Francois 2016](https://www.tidytextmining.com/references.html#ref-R-dplyr)), 
@@ -79,6 +72,14 @@ data. Users can transit fluidly between these packages by keeping the input and 
 in tidy formats. 
 
 ### Token and Tokenization
+
+In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
+frame, where a **token** is a semantically meaningful unit of text, such as a word, 
+a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
+is a process of segmenting running text into a list of tokens to create a table 
+with one-token-per-row. 
+
+Here is a simple example to explain how to use `tidytext` to tokenize textual data. 
 In R, textual data can be stored as character vectors. For example:
 
 ```r
@@ -154,15 +155,15 @@ unnest_tokens(tbl = lyrics_df,
 # … with 31 more rows
 ```
 
+The result of `unnest_tokens` is a tibble. In our case, the lyrics is split into 41 words with 
+each word takes a row. The input column *lyrics* is removed; the new column, or the output column 
+*word*, is added; and the column *line* is kept unchanged. 
+
 Beyond these three primary arguments, the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
 also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
 converts tokens to lowercase and drops the input column if not specified. Punctuations
 are stripped druing the tokenization. 
-
-The result of `unnest_tokens` is a tibble. In our case, 41 words in the lyrics are broken 
-into 41 rows. The input column *lyrics* is removed; the new column, or the output column 
-*word*, is added; and the column *line* is kept unchanged.  
 
 Since the first argument of `unnest_tokens` is a data frame, we can also use pipes to send 
 a data frame to it and obtain the same results:
