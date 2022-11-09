@@ -14,8 +14,8 @@ exercises: 1
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Clean the example documents with the package `tidytext`
-- Calculate the word frequencies in the example documents
+- Preprocess the example documents with the package `tidytext`
+- Calculate the word frequencies of the example documents
 - Visualize the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
