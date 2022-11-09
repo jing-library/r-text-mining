@@ -42,10 +42,9 @@ A simplified process of a typical text mining study can include four steps: data
 text preprocessing or text cleaning, centent analysis, and integration with study. The 
 following chart developed by Antons, D., Grunwald, E., Cichy, P., and salge, T.O. 
 illustrates the workflow. 
-<img src="workflow.jpg"
+<img src="workflow.JPG"
      alt="A simplified process of a typical text mining study"
      style="float: left; margin-right: 10px;" />
-
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
@@ -57,8 +56,8 @@ branded by [Hadley Wickham](https://hadley.nz/) and developed the package
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
 frame, where a **token** is a semantically meaningful unit of text, such as a word, 
 a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
-is a process of segmenting running text into a list of tokens. The result of tokenization
-is a table with one-token-per-row.
+is a process of segmenting running text into a list of tokens to create a table 
+with one-token-per-row. 
 
 Tidy data sets allow manipulation with a standard set of "tidy" tools, including popular 
 packages such as dplyr ([Wickham and Francois 2016](https://www.tidytextmining.com/references.html#ref-R-dplyr)), 
