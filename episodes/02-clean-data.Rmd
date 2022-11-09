@@ -45,6 +45,9 @@ illustrates the workflow.
 <img src="workflow.JPG"
      alt="A simplified process of a typical text mining study"
      style="float: left; margin-right: 10px;" />
+![A simplified process of a typical text mining study](workflow.JPG)
+or another one
+![A simplified process of a typical text mining study](https://github.com/jing-library/r-text-mining/blob/main/episodes/workflow.JPG)
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
