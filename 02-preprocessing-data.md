@@ -20,7 +20,7 @@ exercises: 1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## About Text Mining and Text Analysis
+## Text Mining and Text Analysis
 
 Depending on how it is organized, data can be grouped into two categories: 
 **structured data** and **unstructured data**. **Structured data** is data that has 
@@ -166,9 +166,11 @@ each word takes a row. The input column *lyrics* is removed; the new column, or 
 
 Beyond these three primary arguments, the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
 also has several optional arguments. The default token is "words". It can be set as 
-"characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
+"characters", "sentences", "n-grams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
 converts tokens to lowercase and drops the input column if not specified. Punctuations
-are stripped druing the tokenization. 
+are stripped during the tokenization. Converting text to lower case and removing punctuations
+are also common text preprocess or cleaning techniques. Since the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
+can fulfill these tasks, we do not need to perform them separately. 
 
 Since the first argument of `unnest_tokens` is a data frame, we can also use pipes to send 
 a data frame to it and obtain the same results:
@@ -176,16 +178,66 @@ a data frame to it and obtain the same results:
 lyrics_df %>% 
   unnest_tokens(word, lyrics)
 ```
+### Stop Words
+When analyzing text, usually, some extremely common words are of little value in serving the 
+research purposes. We want to exclude them from the textual data entirely. These words are 
+called **stop words**. Removing **stop word** is one of the common text preprocessing 
+techniques, which allows researchers to focus on the important words in the textual data 
+instead. There is no single universal list of stop words used by all text analysis tools, 
+nor any agreed upon rules for identifying stop words, and indeed not all tools even use such 
+a list. Therefore, any group of words can be chosen as the stop words for a given purpose.
 
-### Project Gutenberg collection
+R package `stopwords` provides stop word lists for multiple languages and sources. It is easily 
+extended. The package `tidytext` also offers a data frame, *stop_words*, to host English stop 
+words from three lexicons - onix, SMART, and snowball, with non-ASCII characters removed. The 
+data frame *stop_words* includes 1,149 stop words. We use it in this lesson when excluding stop
+words from our data sets.
 
-The [Project Gutenberg](https://www.gutenberg.org/) is a collection of free electronic books, 
-or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
+We can use the function [anti_join](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join)
+to exclude stop words from the textural data set. For example:
+
+```r
+lyrics_df %>% 
+  unnest_tokens(word, lyrics) %>%
+  anti_join(stop_words)
+```
+```outupt
+# A tibble: 14 × 2
+    line word       
+   <int> <chr>      
+ 1     1 roads      
+ 2     1 walk       
+ 3     2 call       
+ 4     3 seas       
+ 5     3 white      
+ 6     3 dove       
+ 7     3 sail       
+ 8     4 sleeps     
+ 9     4 sand       
+10     5 times      
+11     5 cannonballs
+12     5 fly        
+13     6 forever    
+14     6 banned
+```
+After removing the stop words, only 14 words left in the lyrics.
+
+## Project Gutenberg Collection
+
+In terms of data gathering, we can create our own data sets or use existing textual datasets. In 
+this lesson, we will use the [Project Gutenberg](https://www.gutenberg.org/) as the source of our
+data sets. The [Project Gutenberg](https://www.gutenberg.org/)is a collection of free electronic 
+books, or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
 developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)), 
 allows users to download public domain works from the Project Gutenberg collection as well as 
 search and filter works by author, title, language, subjects, and other metadata. Project 
-Gutenberg ID numbers are listed in this metadata, which allows us to download the text for each 
-novel using the function gutenberg_download() . Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
+Gutenberg ID is one of the most important metadata, which we can use to download the text for 
+each novel. 
+
+
+Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
+[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
+as examples. 
  
 ```r
 library(gutenbergr)
