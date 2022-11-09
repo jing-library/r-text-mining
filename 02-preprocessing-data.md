@@ -1,12 +1,14 @@
 ---
-title: "Clean the Text"
+title: "Introduction to Text Mining"
 teaching: 0
 exercises: 1
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What is clean text?
+- What are steps in a typical text mining study?
+- What are the common text preprocessing techniques?
+- What is tokenization?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -14,6 +16,7 @@ exercises: 1
 
 - Clean the example documents with the package tidytext
 - Calculate the word frequencies in the example documents
+- Visualize the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -73,11 +76,14 @@ in tidy formats.
 
 ### Token and Tokenization
 
+Many text mining or analysis methods are based on counting words, phrases, sentences, or
+other meanful segments. Spliting textual data into segments enables the computer to count 
+and perform other calculations. These segments are called **tokens** and the process of 
+splitting textual data is called **tokenization**. 
+
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
-frame, where a **token** is a semantically meaningful unit of text, such as a word, 
-a sentence, or a paragraph, that we are interested in analyzing. **Tokenization** 
-is a process of segmenting running text into a list of tokens to create a table 
-with one-token-per-row. 
+frame, where a **token** can be a character, a word, a n-gram, a sentence, a paragraph, 
+a tweet, etc.  
 
 Here is a simple example to explain how to use `tidytext` to tokenize textual data. 
 In R, textual data can be stored as character vectors. For example:
@@ -120,9 +126,8 @@ lyrics_df
 5     5 Yes, and how many times must the cannonballs fly
 6     6 Before they're forever banned? 
 ```
-Next step is tokenization, where we split the text into units, or tokens for further
-analyses. We will use the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
-to break the lyrics into words and strip punctuations. 
+Next, we will use the function [`unnest_tokens`](https://rdrr.io/pkg/tidytext/man/unnest_tokens.html)
+to break the lyrics into words. In the meanwhile, punctuations are stripped. 
 
 The function `unnest_tokens` has three primary arguments:
 
