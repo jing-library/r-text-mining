@@ -32,7 +32,12 @@ Some common examples of semi-structured data are XML, JSON, and HTML files.
 
 **Text mining**, or **text analytics**, is the process of exploring and analyzing 
 unstructured or semi-structured text data to identify key concepts, pattens, 
-relationships, or other attributions of the data. 
+relationships, or other attributions of the data. **Text mining** began with the
+computational and information management areas, whereas **text analysis** originated
+in the humanities with the manual analysis of text such as newspaper indexes and Bible
+concordances. Now these two terms are exchangeable, and generally refer to the use of
+computational methods to explore and analyze unstructured text data. 
+
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
