@@ -6,7 +6,7 @@ exercises: 1
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What are steps in a typical text mining study?
+- What are basic steps in a typical text mining study?
 - What are the common text preprocessing techniques?
 - What is tokenization?
 
@@ -14,7 +14,7 @@ exercises: 1
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Clean the example documents with the package tidytext
+- Clean the example documents with the package `tidytext`
 - Calculate the word frequencies in the example documents
 - Visualize the word frequencies
 
@@ -234,15 +234,17 @@ search and filter works by author, title, language, subjects, and other metadata
 Gutenberg ID is one of the most important metadata, which we can use to download the text for 
 each novel. 
 
-
 Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
 [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
-as examples. 
+as examples. We have already known that their Gutenberg IDs are 35, 36, and 5230. We can dwonload
+them to one by one or download all three novels into one dataframe. 
  
 ```r
 library(gutenbergr)
 
+time_machine <- gutenberg_download(35)
 hgwells <- gutenberg_download(c(35, 36, 5230))
+
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge 
