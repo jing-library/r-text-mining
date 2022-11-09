@@ -409,7 +409,7 @@ associated with the lessons. They appear in the "Instructor View"
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
-## Challenge 1: Can you do it?
+## Challenge 2: Can you create wordcloud using the package `wordcloud`?
 
 Rearrange the lines below to display the word(s) that appear over 600 times.
 
@@ -429,18 +429,17 @@ tidy_books
 ## Output
 
 ```r
-tidy_books %>%
-  count(word, sort = TRUE) %>%
-  filter(n > 600) %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(word, n)) +
-  geom_col() +
-  xlab(NULL) +
-  coord_flip()
+count_time_machine <- tidy_time_machine %>% 
+  count(word)
+
+wordcloud(words = count_time_machine$word,
+          freq = count_time_machine$n,
+          random.order = F,
+          max.words = 100,
+          rot.per = 0.1,
+          colors = brewer.pal(8,"Dark2"))
 ```
-```output
-[1] "This new lesson looks good"
-```
+![Wordcloud using the package wordcloud](wordcloud.png)
 
 :::::::::::::::::::::::::::::::::
 
