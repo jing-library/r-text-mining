@@ -38,6 +38,14 @@ in the humanities with the manual analysis of text such as newspaper indexes and
 concordances. Now these two terms are exchangeable, and generally refer to the use of
 computational methods to explore and analyze unstructured text data. 
 
+A simplified process of a typical text mining study can include four steps: data gather, 
+text preprocessing or text cleaning, centent analysis, and integration with study. The 
+following chart developed by Antons, D., Grunwald, E., Cichy, P., and salge, T.O. 
+illustrates the workflow. 
+<img src="workflow.jpg"
+     alt="A simplified process of a typical text mining study"
+     style="float: left; margin-right: 10px;" />
+
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
