@@ -110,6 +110,7 @@ function [tibble](https://tibble.tidyverse.org/reference/tibble.html) from the p
 `tidyverse` to convert a character vector into a tibble. 
 
 ```r
+install.package("tidyverse")
 library(tidyverse)
 lyrics_df <- tibble(line = 1:6, lyrics)
 
@@ -136,6 +137,7 @@ The function `unnest_tokens` has three primary arguments:
  3. input: the column that gets split as string or symbol.
 
 ```r
+install.package("tidytext")
 library(tidytext)
 
 unnest_tokens(tbl = lyrics_df,
@@ -143,7 +145,7 @@ unnest_tokens(tbl = lyrics_df,
               input = lyrics)
 ```
 
-```outupt
+```output
 # A tibble: 41 × 2
     line word  
    <int> <chr> 
@@ -179,13 +181,14 @@ lyrics_df %>%
   unnest_tokens(word, lyrics)
 ```
 ### Stop Words
-When analyzing text, usually, some extremely common words are of little value in serving the 
-research purposes. We want to exclude them from the textual data entirely. These words are 
-called **stop words**. Removing **stop word** is one of the common text preprocessing 
-techniques, which allows researchers to focus on the important words in the textual data 
-instead. There is no single universal list of stop words used by all text analysis tools, 
-nor any agreed upon rules for identifying stop words, and indeed not all tools even use such 
-a list. Therefore, any group of words can be chosen as the stop words for a given purpose.
+When analyzing text, usually, some extremely common words such as "the", "have", "is", "are" 
+are of little value in serving the research purposes. We want to exclude them from the textual 
+data entirely. These words are called **stop words**. Removing **stop word** is one of the 
+common text preprocessing techniques, which allows researchers to focus on the important words 
+in the textual data instead. There is no single universal list of stop words used by all text 
+analysis tools, nor any agreed upon rules for identifying stop words, and indeed not all tools 
+even use such a list. Therefore, any group of words can be chosen as the stop words for a given 
+purpose.
 
 R package `stopwords` provides stop word lists for multiple languages and sources. It is easily 
 extended. The package `tidytext` also offers a data frame, *stop_words*, to host English stop 
@@ -201,7 +204,7 @@ lyrics_df %>%
   unnest_tokens(word, lyrics) %>%
   anti_join(stop_words)
 ```
-```outupt
+```output
 # A tibble: 14 × 2
     line word       
    <int> <chr>      
@@ -240,12 +243,109 @@ as examples. We have already known that their Gutenberg IDs are 35, 36, and 5230
 them to one by one or download all three novels into one dataframe. 
  
 ```r
+install.packages("gutenbergr")
 library(gutenbergr)
 
 time_machine <- gutenberg_download(35)
 hgwells <- gutenberg_download(c(35, 36, 5230))
+time_machine
 
 ```
+```output
+# A tibble: 3,174 × 2
+   gutenberg_id text              
+          <int> <chr>             
+ 1           35 "The Time Machine"
+ 2           35 ""                
+ 3           35 "An Invention"    
+ 4           35 ""                
+ 5           35 "by H. G. Wells"  
+ 6           35 ""                
+ 7           35 ""                
+ 8           35 "CONTENTS"        
+ 9           35 ""                
+10           35 " I Introduction" 
+# … with 3,164 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+We can preprocess the text by tokenizing it words, removing punctuations, converting it to lower case, 
+and removing stop words. The clean data has 11,268 rows and each row contains one word.  
+
+```r
+tidy_time_machine <- time_machine %>% 
+  unnest_tokens(word,text) %>% 
+  anti_join(stop_words)
+  
+tidy_time_machine 
+```
+
+```output
+# A tibble: 11,268 × 2
+   gutenberg_id word        
+          <int> <chr>       
+ 1           35 time        
+ 2           35 machine     
+ 3           35 invention   
+ 4           35 contents    
+ 5           35 introduction
+ 6           35 ii          
+ 7           35 machine     
+ 8           35 iii         
+ 9           35 time        
+10           35 traveller   
+# … with 11,258 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+## Word Frequencies
+
+Since many text analysis methods are based on word counts in the textual data, we can first calculate word counts or 
+word frequency. Word frequency looks at how how often words are repeat in texts. To count the words, we can use the 
+function [count](https://dplyr.tidyverse.org/reference/count.html) from the package [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html).  
+
+```r
+tidy_time_machine %>% 
+  count(word, sort = TRUE)
+```
+
+```output
+# A tibble: 4,172 × 2
+   word          n
+   <chr>     <int>
+ 1 time        207
+ 2 machine      88
+ 3 white        61
+ 4 traveller    57
+ 5 hand         49
+ 6 morlocks     48
+ 7 people       46
+ 8 weena        46
+ 9 found        44
+10 light        43
+# … with 4,162 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+After removing stop words, the novel *The Time Machine* contains 11,268 words, where 4,172 are unique. The word *time* 
+is most used word and it appears 207 times in the novel.
+
+Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
+or wordcloud packages.
+
+```r
+tidy_time_machine %>% 
+  count(word, sort = TRUE) %>%
+  filter(n > 40) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(n, word))+
+  geom_col()+
+  theme_bw()
+  
+```
+
+
+
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -266,24 +366,17 @@ tidy_hgwells <- hgwells %>%
 ```output
 TEST TEST TEST NEED TO ADD
 ```
-
+```r
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
+```
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-
-## Word Frequencies
-
-One of the first steps used in text analysis, is word frequency. Word frequency looks at how how often words are repeat in texts. In order to count the words, we first need to remove extremely common words called stop words such as "the", "have", "is", "are" amoung others in English. We can remove. Using the H.G. Wells books let's look at how we could run it in R. 
-
-
-```r
-tidy_hgwells <- hgwells %>%
-  unnest_tokens(word, text) %>%
-  anti_join(stop_words)
-```
 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
