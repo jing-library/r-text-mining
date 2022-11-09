@@ -297,6 +297,45 @@ tidy_time_machine
 # … with 11,258 more rows
 # ℹ Use `print(n = ...)` to see more rows
 ```
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Can you do it?
+
+Please preprocess all the three novels by H.G. Wells?
+
+
+:::::::::::::::::::::::: solution 
+
+## Output
+
+```r
+tidy_hgwells <- hgwells %>%
+  unnest_tokens(word, text) %>% 
+  anti_join(stop_words)
+
+tidy_hgwells
+```
+```output
+# A tibble: 52,313 × 2
+   gutenberg_id word        
+          <int> <chr>       
+ 1           35 time        
+ 2           35 machine     
+ 3           35 invention   
+ 4           35 contents    
+ 5           35 introduction
+ 6           35 ii          
+ 7           35 machine     
+ 8           35 iii         
+ 9           35 time        
+10           35 traveller   
+# … with 52,303 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Word Frequencies
 
@@ -331,7 +370,7 @@ After removing stop words, the novel *The Time Machine* contains 11,268 words, w
 is most used word and it appears 207 times in the novel.
 
 Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
-or wordcloud packages.
+or the packages [wordcloud](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
 
 ```r
 tidy_time_machine %>% 
@@ -346,137 +385,52 @@ The output is a column chart:
 ![Column chart for word frequency](word_frequency_bar.png)
 
 
-
+```r
+count_time_machine <- tidy_time_machine %>% 
+  count(word, sort = TRUE)
+  
+wordcloud(words = count_time_machine$word,
+          freq = count_time_machine$n,
+          random.order = FALSE,
+          max.words = 100,
+          colors = brewer.pal(8,"Dark2"))
+```
 
 ![Wordcloud using the package wordcloud](wordcloud.png)
 
-
-
-
-::::::::::::::::::::::::::::::::::::: challenge 
-
-## Challenge 1: Can you do it?
-
-How can we use unnest_tokens with the H.G. Wells novels?
-
-
-
-:::::::::::::::::::::::: solution 
-
-## Output
-
-```r
-tidy_hgwells <- hgwells %>%
-  unnest_tokens(word, text)
-```
-```output
-TEST TEST TEST NEED TO ADD
-```
-```r
-tidy_hgwells <- hgwells %>%
-  unnest_tokens(word, text) %>%
-  anti_join(stop_words)
-```
-:::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output. 
-Please refer to the [Introduction to The Carpentries 
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
-
-What you need to know is that there are three sections required for a valid
-Carpentries lesson:
-
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Challenge 2: Can you create wordcloud using the package `wordcloud`?
 
-Rearrange the lines below to display the word(s) that appear over 600 times.
-
-```r
-tidy_books
-  filter(n > 600)
-  mutate(word = reorder(word, n))
-  count(word, sort = TRUE) 
-  ggplot(aes(word, n)) +
-	  geom_col() +
-	  xlab(NULL) +
-	  coord_flip()
-```
+Display the word frequencies of the clean data of the three novels by H.G. Wells that appear over 100 times.
 
 :::::::::::::::::::::::: solution 
 
 ## Output
 
 ```r
-count_time_machine <- tidy_time_machine %>% 
-  count(word)
-
-wordcloud(words = count_time_machine$word,
-          freq = count_time_machine$n,
-          random.order = F,
-          max.words = 100,
-          rot.per = 0.1,
-          colors = brewer.pal(8,"Dark2"))
+tidy_hgwells %>% 
+  count(word, sort = TRUE) %>% 
+  filter(n > 100) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(word, n)) +
+    geom_col() +
+    xlab(NULL) +
+    coord_flip()
 ```
-![Wordcloud using the package wordcloud](wordcloud.png)
+![Column chart for word frequency](challenge2_solution.png)
 
 :::::::::::::::::::::::::::::::::
 
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution 
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Figures
-
-You can use standard markdown for static figures with the following syntax:
-
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
-
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
-
-## Math
-
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
-
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
-
-Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+- Use `unnest_tokens` to tokenize the text in the format of a data frame
+- Use `anti_join` to exclude stop words from the text data set
+- Use `count` to calculate the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
