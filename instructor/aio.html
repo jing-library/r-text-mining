@@ -177,7 +177,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="02-clean-data.html">1. Clean the Text</a>
+        <a href="02-preprocessing-data.html">1. Introduction to Text Mining</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -263,11 +263,11 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="aio-02-clean-data"><p>Content from <a href="02-clean-data.html">Clean the Text</a></p>
+<section id="aio-02-preprocessing-data"><p>Content from <a href="02-preprocessing-data.html">Introduction to Text Mining</a></p>
 <hr>
 <p> Last updated on 2022-11-09 | 
         
-        <a href="https://github.com/jing-library/r-text-mining/edit/main/episodes/02-clean-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/jing-library/r-text-mining/edit/main/episodes/02-preprocessing-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 1 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -280,7 +280,9 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What is clean text?</li>
+<li>What are steps in a typical text mining study?</li>
+<li>What are the common text preprocessing techniques?</li>
+<li>What is tokenization?</li>
 </ul>
 </div>
 </div>
@@ -292,6 +294,7 @@
 <ul>
 <li>Clean the example documents with the package tidytext</li>
 <li>Calculate the word frequencies in the example documents</li>
+<li>Visualize the word frequencies</li>
 </ul>
 </div>
 </div>
@@ -313,7 +316,8 @@
 <div class="section level3">
 <h3 id="token-and-tokenization">Token and Tokenization<a class="anchor" aria-label="anchor" href="#token-and-tokenization"></a>
 </h3>
-<p>In the package <code>tidytext</code>, <strong>tidy text</strong> is defined as a one-token-per-row data frame, where a <strong>token</strong> is a semantically meaningful unit of text, such as a word, a sentence, or a paragraph, that we are interested in analyzing. <strong>Tokenization</strong> is a process of segmenting running text into a list of tokens to create a table with one-token-per-row.</p>
+<p>Many text mining or analysis methods are based on counting words, phrases, sentences, or other meanful segments. Spliting textual data into segments enables the computer to count and perform other calculations. These segments are called <strong>tokens</strong> and the process of splitting textual data is called <strong>tokenization</strong>.</p>
+<p>In the package <code>tidytext</code>, <strong>tidy text</strong> is defined as a one-token-per-row data frame, where a <strong>token</strong> can be a character, a word, a n-gram, a sentence, a paragraph, a tweet, etc.</p>
 <p>Here is a simple example to explain how to use <code>tidytext</code> to tokenize textual data. In R, textual data can be stored as character vectors. For example:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -360,7 +364,7 @@
 5     5 Yes, and how many times must the cannonballs fly
 6     6 Before they're forever banned? </code></pre>
 </div>
-<p>Next step is tokenization, where we split the text into units, or tokens for further analyses. We will use the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a> to break the lyrics into words and strip punctuations.</p>
+<p>Next, we will use the function <a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html" class="external-link"><code>unnest_tokens</code></a> to break the lyrics into words. In the meanwhile, punctuations are stripped.</p>
 <p>The function <code>unnest_tokens</code> has three primary arguments:</p>
 <ol style="list-style-type: decimal">
 <li>tbl: the data frame to be tokenized.</li>
@@ -661,7 +665,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -693,7 +697,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -723,7 +727,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
