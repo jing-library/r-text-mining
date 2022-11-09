@@ -279,7 +279,7 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What are steps in a typical text mining study?</li>
+<li>What are basic steps in a typical text mining study?</li>
 <li>What are the common text preprocessing techniques?</li>
 <li>What is tokenization?</li>
 </ul>
@@ -291,7 +291,8 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Clean the example documents with the package tidytext</li>
+<li>Clean the example documents with the package <code>tidytext</code>
+</li>
 <li>Calculate the word frequencies in the example documents</li>
 <li>Visualize the word frequencies</li>
 </ul>
@@ -442,13 +443,14 @@
 </h2>
 <hr class="half-width">
 <p>In terms of data gathering, we can create our own data sets or use existing textual datasets. In this lesson, we will use the <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> as the source of our data sets. The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a>is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID is one of the most important metadata, which we can use to download the text for each novel.</p>
-<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a> as examples.</p>
+<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a> as examples. We have already known that their Gutenberg IDs are 35, 36, and 5230. We can dwonload them to one by one or download all three novels into one dataframe.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">gutenbergr</span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">time_machine</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fl">35</span><span class="op">)</span></span>
 <span><span class="va">hgwells</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">35</span>, <span class="fl">36</span>, <span class="fl">5230</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="challenge1" class="callout challenge">
@@ -470,7 +472,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -542,7 +544,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -585,7 +587,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -851,7 +853,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -881,7 +883,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
