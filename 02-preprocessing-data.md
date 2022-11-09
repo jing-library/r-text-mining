@@ -6,7 +6,7 @@ exercises: 1
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What are basic steps in a typical text mining study?
+- What are the basic steps in a typical text mining study?
 - What are the common text preprocessing techniques?
 - What is tokenization?
 
