@@ -333,8 +333,7 @@ is most used word and it appears 207 times in the novel.
 Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
 or wordcloud packages.
 
-
-```r
+```output
 tidy_time_machine %>% 
   count(word, sort = TRUE) %>%
   filter(n > 40) %>% 
@@ -342,10 +341,7 @@ tidy_time_machine %>%
   ggplot(aes(n, word))+
   geom_col()+
   theme_bw()
-```
-
-```{.error}
-Error in tidy_time_machine %>% count(word, sort = TRUE) %>% filter(n > : could not find function "%>%"
+  
 ```
 
 
