@@ -17,7 +17,7 @@ exercises: 1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction - Text Mining and R
+## About Text Mining and Text Analysis
 
 Depending on how it is organized, data can be grouped into two categories: 
 **structured data** and **unstructured data**. **Structured data** is data that has 
@@ -39,20 +39,29 @@ concordances. Now these two terms are exchangeable, and generally refer to the u
 computational methods to explore and analyze unstructured text data. 
 
 A simplified process of a typical text mining study can include four steps: data gather, 
-text preprocessing or text cleaning, centent analysis, and integration with study. The 
-following chart developed by Antons, D., Grunwald, E., Cichy, P., and salge, T.O. 
-illustrates the workflow. 
+text preprocessing or cleaning, text analysis, and integration with the study. 
 
-![A simplified process of a typical text mining study](workflow.JPG)
+In terms of data gathering, we may create a dataset, which is called
+a corpus, or we may select an existing data for mining. After a corpus
+is generated, usually, we need to preprocess or clean it to get it ready
+for analysis. Common techniques used for preparing a corpus include converting
+text to lower case, removing punctuation and non-alphanumeric character,
+remove stopwords, tokenization, tagging parts of speech, word replacement,
+stemming and lemmatization, etc. Next step will be text mining. Some common
+text mining methods are topic modelling, sentiment analysis, term frequency
+and TD-IDF, and collocation analysis. We will then integrate the findings
+from text mining to the study. Various text preprocessing techniques and text
+mining methods serve different research purposes. This lesson is to demo how to
+use the R package `tidytext` to preprocess text data from an existing dataset to
+perform a sentiment analysis.
 
+## Using R Package `tidytext` in Text Mining
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
 Julia Silge and David Robinson followed the [tidy data principles](https://doi.org/10.18637/jss.v059.i10) 
 branded by [Hadley Wickham](https://hadley.nz/) and developed the package 
-`tidytext` to analyze textual data. This lesson will focus on using the package 
-`tidytext` to preprocess text data from an existing dataset and perform a sentiment 
-analysis.
+`tidytext` to analyze textual data. 
 
 In the package `tidytext`, **tidy text** is defined as a one-token-per-row data 
 frame, where a **token** is a semantically meaningful unit of text, such as a word, 
@@ -69,7 +78,7 @@ These packages extend the capacities of `tidytext` of exploring and visualizing 
 data. Users can transit fluidly between these packages by keeping the input and output 
 in tidy formats. 
 
-## Token and Tokenization
+### Token and Tokenization
 In R, textual data can be stored as character vectors. For example:
 
 ```r
@@ -149,7 +158,7 @@ Beyond these three primary arguments, the function [`unnest_tokens`](https://rdr
 also has several optional arguments. The default token is "words". It can be set as 
 "characters", "sentences", "ngrams", "lines", "paragraphs", etc. `unnest_tokens` automatically 
 converts tokens to lowercase and drops the input column if not specified. Punctuations
-are stripped. 
+are stripped druing the tokenization. 
 
 The result of `unnest_tokens` is a tibble. In our case, 41 words in the lyrics are broken 
 into 41 rows. The input column *lyrics* is removed; the new column, or the output column 
@@ -162,13 +171,15 @@ lyrics_df %>%
   unnest_tokens(word, lyrics)
 ```
 
-## Project Gutenberg collection and the workflow of text analyses
+### Project Gutenberg collection
 
 The [Project Gutenberg](https://www.gutenberg.org/) is a collection of free electronic books, 
 or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
 developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)), 
 allows users to download public domain works from the Project Gutenberg collection as well as 
-search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID numbers are listed in this metadata, which allows us to use gutenberg_download() in order to download the text for each novel. Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
+search and filter works by author, title, language, subjects, and other metadata. Project 
+Gutenberg ID numbers are listed in this metadata, which allows us to download the text for each 
+novel using the function gutenberg_download() . Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230). 
  
 ```r
 library(gutenbergr)
