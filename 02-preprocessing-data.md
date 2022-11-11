@@ -301,7 +301,7 @@ tidy_time_machine
 
 ## Challenge 1: Can you do it?
 
-Please preprocess all the three novels by H.G. Wells?
+How would you preprocess all the three novels by H.G. Wells?
 
 
 :::::::::::::::::::::::: solution 
