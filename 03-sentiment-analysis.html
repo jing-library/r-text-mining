@@ -232,7 +232,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Sentiment Analysis</h1>
-        <p> Last updated on 2022-11-10 | 
+        <p> Last updated on 2022-11-11 | 
         
         <a href="https://github.com/jing-library/r-text-mining/edit/main/episodes/03-sentiment-analysis.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -269,8 +269,9 @@
 </div>
 <section id="sentiment-analysis"><h2 class="section-heading">Sentiment Analysis<a class="anchor" aria-label="anchor" href="#sentiment-analysis"></a>
 </h2>
-<hr class="half-width"><p>Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. Words are categorized into positive or negative.</p>
-<p>The tidytext package comes with the datasets. These datasets contain several sentiment lexicons, where each word is</p>
+<hr class="half-width"><p>Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text.</p>
+<p>The tidytext package comes with several sentiment lexicons datasets. These lexicons are based on unigrams, i.e., single words from the English language and the words are assigned scores for positive or negative sentiment and possibly emotions like joy, anger, sadness, and surprise.</p>
+<p>The function get_sentiments() allows us to get specific sentiment lexicons with the appropriate measures for each one.</p>
 <p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
 <p>What you need to know is that there are three sections required for a valid Carpentries lesson template:</p>
 <ol style="list-style-type: decimal"><li>
@@ -304,7 +305,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -334,7 +335,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -412,7 +413,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.7" class="external-link">sandpaper (0.10.7)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
@@ -435,8 +436,8 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/03-sentiment-analysis.html",
   "identifier": "https://jing-library.github.io/r-text-mining/03-sentiment-analysis.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2022-11-10",
-  "datePublished": "2022-11-10"
+  "dateModified": "2022-11-11",
+  "datePublished": "2022-11-11"
 }
 
   </script><script>
