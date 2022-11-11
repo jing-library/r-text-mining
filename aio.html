@@ -533,7 +533,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -599,6 +599,21 @@
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <p>After removing stop words, the novel <em>The Time Machine</em> contains 11,268 words, where 4,172 are unique. The word <em>time</em> is most used word and it appears 207 times in the novel.</p>
+<p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tidy_time_machine</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">40</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">n</span>, <span class="va">word</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<figure>The output is a column chart: <img src="word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><p>```r count_time_machine &lt;- tidy_time_machine %&gt;% count(word, sort = TRUE)</p>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
