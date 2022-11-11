@@ -38,6 +38,68 @@ The function get_sentiments() allows us to get specific sentiment lexicons with 
 
 
 
+Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
+or the packages [wordcloud](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
+
+```r
+tidy_time_machine %>% 
+  count(word, sort = TRUE) %>%
+  filter(n > 40) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(n, word))+
+  geom_col()+
+  theme_bw()
+```
+The output is a column chart:
+![Column chart for word frequency](word_frequency_bar.png)
+
+
+```r
+count_time_machine <- tidy_time_machine %>% 
+  count(word, sort = TRUE)
+  
+wordcloud(words = count_time_machine$word,
+          freq = count_time_machine$n,
+          random.order = FALSE,
+          max.words = 100,
+          colors = brewer.pal(8,"Dark2"))
+```
+
+![Wordcloud using the package wordcloud](wordcloud.png)
+
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 2: Can you create wordcloud using the package `wordcloud`?
+
+Display the word frequencies of the clean data of the three novels by H.G. Wells that appear over 100 times.
+
+:::::::::::::::::::::::: solution 
+
+## Output
+
+```r
+tidy_hgwells %>% 
+  count(word, sort = TRUE) %>% 
+  filter(n > 100) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(word, n)) +
+    geom_col() +
+    xlab(NULL) +
+    coord_flip()
+```
+![Column chart for word frequency](challenge2_solution.png)
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
 
 
 
