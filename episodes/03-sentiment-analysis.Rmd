@@ -178,8 +178,9 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Well we can use this 
-- Use 
+- Use `unnest_tokens` to tokenize the text in the format of a data frame
+- Use `anti_join` to exclude stop words from the text data set
+- Use `count` to calculate the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
