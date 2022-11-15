@@ -32,6 +32,22 @@ The function `get_sentiments()` allows us to get specific sentiment lexicons wit
 library(tidytext)
 get_sentiments("bing")
 ```
+```output
+#> # A tibble: 6,786 × 2
+#>    word        sentiment
+#>    <chr>       <chr>    
+#>  1 2-faces     negative 
+#>  2 abnormal    negative 
+#>  3 abolish     negative 
+#>  4 abominable  negative 
+#>  5 abominably  negative 
+#>  6 abominate   negative 
+#>  7 abomination negative 
+#>  8 abort       negative 
+#>  9 aborted     negative 
+#> 10 aborts      negative 
+#> # … with 6,776 more rows
+```
 
 
 
