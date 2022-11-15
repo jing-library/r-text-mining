@@ -24,7 +24,7 @@ Sentiment Analysis identifies the emotional tone behind a body of text. Sentimen
 
 
 
-The tidytext package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from Bing Liu and collaborators, the NRC Emotion Lexicon from Saif Mohammad and Peter Turney, and the lexicon of Finn Arup Nielsen. These lexicons are based on unigrams, i.e., single words from the English language. The bing lexicon categorizes words into positive or negative, the nrc lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the AFINN lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
+The tidytext package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the NRC Emotion Lexicon from Saif Mohammad and Peter Turney, and the lexicon of Finn Arup Nielsen. These lexicons are based on unigrams, i.e., single words from the English language. The bing lexicon categorizes words into positive or negative, the nrc lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the AFINN lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
