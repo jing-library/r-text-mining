@@ -26,36 +26,27 @@ The tidytext package comes with three sentiment lexicons in the sentiments datas
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
-
-
-
-
-
-::::::::::::::::::::::::::::::::::::: challenge 
-
-## Challenge 2: Can you create wordcloud using the package `wordcloud`?
-
-Display the word frequencies of the clean data of the three novels by H.G. Wells that appear over 100 times.
-
-:::::::::::::::::::::::: solution 
-
-## Output
-
 ```r
-tidy_hgwells %>% 
-  count(word, sort = TRUE) %>% 
-  filter(n > 100) %>% 
-  mutate(word = reorder(word, n)) %>% 
-  ggplot(aes(word, n)) +
-    geom_col() +
-    xlab(NULL) +
-    coord_flip()
+library(tidytext)
+get_sentiments("bing")
 ```
-![Column chart for word frequency](challenge2_solution.png)
 
-:::::::::::::::::::::::::::::::::
-
-
+```output
+#> # A tibble: 6,786 × 2
+#>    word        sentiment
+#>    <chr>       <chr>    
+#>  1 2-faces     negative 
+#>  2 abnormal    negative 
+#>  3 abolish     negative 
+#>  4 abominable  negative 
+#>  5 abominably  negative 
+#>  6 abominate   negative 
+#>  7 abomination negative 
+#>  8 abort       negative 
+#>  9 aborted     negative 
+#> 10 aborts      negative 
+#> # … with 6,776 more rows
+```
 
 
 
