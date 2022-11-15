@@ -534,7 +534,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -613,7 +613,20 @@
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
+<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">count_time_machine</span> <span class="op">&lt;-</span> <span class="va">tidy_time_machine</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="fu">wordcloud</span><span class="op">(</span>words <span class="op">=</span> <span class="va">count_time_machine</span><span class="op">$</span><span class="va">word</span>,</span>
+<span>          freq <span class="op">=</span> <span class="va">count_time_machine</span><span class="op">$</span><span class="va">n</span>,</span>
+<span>          random.order <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>          max.words <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>          colors <span class="op">=</span> <span class="fu">brewer.pal</span><span class="op">(</span><span class="fl">8</span>,<span class="st">"Dark2"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<figure>The output is a word cloud: <img src="../wordcloud.png" alt="Wordcloud using the package wordcloud" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
