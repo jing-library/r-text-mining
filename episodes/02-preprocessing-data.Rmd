@@ -399,8 +399,6 @@ wordcloud(words = count_time_machine$word,
 ![Wordcloud using the package wordcloud](wordcloud.png)
   
 
-:::::::::::::::::::::::::::::::::
-
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
