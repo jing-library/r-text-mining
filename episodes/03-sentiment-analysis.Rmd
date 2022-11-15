@@ -27,14 +27,14 @@ The tidytext package comes with three sentiment lexicons in the sentiments datas
 
 The function 'get_sentiments()' allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ```r
 library(tidytext)
 get_sentiments("bing")
 ```
 
-```{r pyramid, fig.alt = "Tibble of", fig.cap = "Tibble of"}
+```output
 #> # A tibble: 6,786 × 2
 #>    word        sentiment
 #>    <chr>       <chr>    
@@ -50,7 +50,7 @@ get_sentiments("bing")
 #> 10 aborts      negative 
 #> # … with 6,776 more rows
 ```
-::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 
 
@@ -196,7 +196,7 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use lexicons
+- Use general purpose lexicons
 - Use sentiments 
 - Run `sandpaper::check_lesson()` to identify any issues with your lesson
 - Run `sandpaper::build_lesson()` to preview your lesson locally
