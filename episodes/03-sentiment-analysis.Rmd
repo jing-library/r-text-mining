@@ -45,7 +45,6 @@ get_sentiments("bing")
 #>  9 aborted     negative 
 #> 10 aborts      negative 
 #> # … with 6,776 more rows
-
 ```
 
 
