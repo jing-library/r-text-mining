@@ -27,6 +27,7 @@ The tidytext package comes with three sentiment lexicons in the sentiments datas
 
 The function 'get_sentiments()' allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```r
 library(tidytext)
@@ -49,7 +50,7 @@ get_sentiments("bing")
 #> 10 aborts      negative 
 #> # … with 6,776 more rows
 ```
-
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
