@@ -30,6 +30,32 @@ The function `get_sentiments()` allows us to get specific sentiment lexicons wit
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
 or the packages [wordcloud](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
 
@@ -181,7 +207,7 @@ Cool, right?
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Use general purpose lexicons
-- Use sentiments 
+- Use sentiments dataset
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
