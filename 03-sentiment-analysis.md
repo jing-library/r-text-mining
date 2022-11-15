@@ -20,9 +20,11 @@ exercises: 0
 
 ## Sentiment Analysis
 
-Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. 
+Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.
 
-The tidytext package comes with several sentiment lexicons datasets. These lexicons are based on unigrams, i.e., single words from the English language and the words are assigned scores for positive or negative sentiment and possibly emotions like joy, anger, sadness, and surprise.
+
+
+The tidytext package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from Bing Liu and collaborators, the NRC Emotion Lexicon from Saif Mohammad and Peter Turney, and the lexicon of Finn Arup Nielsen. These lexicons are based on unigrams, i.e., single words from the English language. The bing lexicon categorizes words into positive or negative, the nrc lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the AFINN lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
 The function get_sentiments() allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
