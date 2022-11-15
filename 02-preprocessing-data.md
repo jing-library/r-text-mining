@@ -385,11 +385,6 @@ The output is a column chart:
 ![Column chart for word frequency](word_frequency_bar.png)
 
 
-```r
-count_time_machine <- tidy_time_machine %>% 
-  count(word, sort = TRUE)
-  
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

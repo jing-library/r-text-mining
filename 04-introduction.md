@@ -6,18 +6,23 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- What is sentment analysis?
+- How can text analysis evaluate emotion?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Analyze sentiment using general-purpose lexicons
+- Visualize the sentiment analysis results using column chart and word cloud
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
+## Sentiment Analysis 
+
+Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.
+
+
 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.txt) for static files and

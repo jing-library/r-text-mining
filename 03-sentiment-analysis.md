@@ -28,16 +28,6 @@ The function get_sentiments() allows us to get specific sentiment lexicons with 
 
 
 
-
-
-
-
-
-
-
-
-
-
 Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
 or the packages [wordcloud](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
 
@@ -194,8 +184,9 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Well we can use this 
-- Use 
+- Use `unnest_tokens` to tokenize the text in the format of a data frame
+- Use `anti_join` to exclude stop words from the text data set
+- Use `count` to calculate the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
