@@ -686,7 +686,7 @@ any links that you are not going to use.
 </h2>
 <hr class="half-width">
 <p>Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.</p>
-<p>The tidytext package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" class="external-link">Bing Liu and collaborators</a>, the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" class="external-link">NRC Emotion Lexicon</a> from Saif Mohammad and Peter Turney, and the lexicon of <a href="http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html" class="external-link">Finn Arup Nielsen</a>. These lexicons are based on unigrams, i.e., single words from the English language. The <code>bing</code> lexicon categorizes words into positive or negative, the <code>nrc</code> lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the <code>AFINN</code> lexicon categorizes words using a score, with negative scores indicating a negative sentiment.</p>
+<p>The <code>tidytext</code> package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" class="external-link">Bing Liu and collaborators</a>, the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" class="external-link">NRC Emotion Lexicon</a> from Saif Mohammad and Peter Turney, and the lexicon of <a href="http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html" class="external-link">Finn Arup Nielsen</a>. These lexicons are based on unigrams, i.e., single words from the English language. The <code>bing</code> lexicon categorizes words into positive or negative, the <code>nrc</code> lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the <code>AFINN</code> lexicon categorizes words using a score, with negative scores indicating a negative sentiment.</p>
 <p>The function <code>get_sentiments()</code> allows us to get specific sentiment lexicons with the appropriate measures for each one.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -713,8 +713,32 @@ any links that you are not going to use.
 <span><span class="co">#&gt; 10 aborts      negative </span></span>
 <span><span class="co">#&gt; # … with 6,776 more rows</span></span></code></pre>
 </div>
-<p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
 <div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"nrc"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="co">#&gt; # A tibble: 13,901 × 2</span></span>
+<span><span class="co">#&gt;    word        sentiment</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 abacus      trust    </span></span>
+<span><span class="co">#&gt;  2 abandon     fear     </span></span>
+<span><span class="co">#&gt;  3 abandon     negative </span></span>
+<span><span class="co">#&gt;  4 abandon     sadness  </span></span>
+<span><span class="co">#&gt;  5 abandoned   anger    </span></span>
+<span><span class="co">#&gt;  6 abandoned   fear     </span></span>
+<span><span class="co">#&gt;  7 abandoned   negative </span></span>
+<span><span class="co">#&gt;  8 abandoned   sadness  </span></span>
+<span><span class="co">#&gt;  9 abandonment anger    </span></span>
+<span><span class="co">#&gt; 10 abandonment fear     </span></span>
+<span><span class="co">#&gt; # … with 13,891 more rows</span></span></code></pre>
+</div>
+<p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -726,7 +750,7 @@ any links that you are not going to use.
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb4">
+<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -758,9 +782,9 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -796,7 +820,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -812,7 +836,7 @@ any links that you are not going to use.
 </h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -828,7 +852,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -858,7 +882,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -869,7 +893,7 @@ any links that you are not going to use.
 </h2>
 <hr class="half-width">
 <p>You can also include figures generated from R Markdown:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -966,7 +990,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -998,7 +1022,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1028,7 +1052,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
