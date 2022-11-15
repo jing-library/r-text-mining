@@ -389,6 +389,8 @@ The output is a column chart:
 count_time_machine <- tidy_time_machine %>% 
   count(word, sort = TRUE)
 ```  
+
+::::::::::::::::::::::::::::::::::::::::::::::::
   
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
