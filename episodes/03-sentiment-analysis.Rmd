@@ -31,7 +31,9 @@ The function get_sentiments() allows us to get specific sentiment lexicons with 
 ```r
 library(tidytext)
 get_sentiments("bing")
+```
 
+```{r pyramid, fig.alt = "Tibble of", fig.cap = "Tibble of"}
 #> # A tibble: 6,786 × 2
 #>    word        sentiment
 #>    <chr>       <chr>    
@@ -47,6 +49,7 @@ get_sentiments("bing")
 #> 10 aborts      negative 
 #> # … with 6,776 more rows
 ```
+
 
 
 
