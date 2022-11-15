@@ -29,16 +29,6 @@ The function get_sentiments() allows us to get specific sentiment lexicons with 
 
 
 
-
-
-
-
-
-
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Use general purpose lexicons
