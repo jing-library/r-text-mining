@@ -28,6 +28,10 @@ The tidytext package comes with three sentiment lexicons in the sentiment’s da
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
+```r
+library(tidytext)
+get_sentiments("bing")
+```
 
 
 
