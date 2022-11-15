@@ -180,9 +180,9 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `unnest_tokens` to tokenize the text in the format of a data frame
-- Use `anti_join` to exclude stop words from the text data set
-- Use `count` to calculate the word frequencies
+- Use general purpose lexicons
+- Use sentiments 
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
