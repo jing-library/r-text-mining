@@ -70,9 +70,41 @@ get_sentiments("nrc")
 #> # … with 13,891 more rows
 ```
 
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Can you do it?
+
+What command in R will display the afinn lexicon?
+
+```r
+get_sentiments("afinn")
+```
+
+:::::::::::::::::::::::: solution 
+
+## Output
+ 
+```output
+#> # A tibble: 2,477 × 2
+#>    word       value
+#>    <chr>      <dbl>
+#>  1 abandon       -2
+#>  2 abandoned     -2
+#>  3 abandons      -2
+#>  4 abducted      -2
+#>  5 abduction     -2
+#>  6 abductions    -2
+#>  7 abhor         -3
+#>  8 abhorred      -3
+#>  9 abhorrent     -3
+#> 10 abhors        -3
+#> # … with 2,467 more rows
+```
+
+:::::::::::::::::::::::::::::::::
 
 
-
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
