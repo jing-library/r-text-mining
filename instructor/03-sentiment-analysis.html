@@ -164,6 +164,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#sentiment-analysis">Sentiment Analysis</a></li>
+<li><a href="#sentiment-analysis-with-inner-join">Sentiment analysis with inner join</a></li>
 <li><a href="#figures">Figures</a></li>
 <li><a href="#math">Math</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -273,7 +274,7 @@
 </h2>
 <hr class="half-width"><p>Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.</p>
 <p>The <code>tidytext</code> package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" class="external-link">Bing Liu and collaborators</a>, the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" class="external-link">NRC Emotion Lexicon</a> from Saif Mohammad and Peter Turney, and the lexicon of <a href="http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html" class="external-link">Finn Arup Nielsen</a>. These lexicons are based on unigrams, i.e., single words from the English language. The <code>bing</code> lexicon categorizes words into positive or negative, the <code>nrc</code> lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the <code>AFINN</code> lexicon categorizes words using a score, with negative scores indicating a negative sentiment.</p>
-<p>The function <code>get_sentiments()</code> allows us to get specific sentiment lexicons with the appropriate measures for each one.</p>
+<p>The function <code>get_sentiments()</code> allows us to get specific sentiment lexicons with the appropriate measures for each one. Let’s look at how each of the lexicons attributes sentiment to the words.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -348,7 +349,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -372,6 +373,10 @@
 </div>
 </div>
 </div>
+</section><section id="sentiment-analysis-with-inner-join"><h2 class="section-heading">Sentiment analysis with inner join<a class="anchor" aria-label="anchor" href="#sentiment-analysis-with-inner-join"></a>
+</h2>
+<hr class="half-width"><p>Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.</p>
+<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in</p>
 <p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -417,7 +422,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -452,7 +457,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -484,7 +489,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -514,7 +519,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
