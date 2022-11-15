@@ -26,7 +26,7 @@ Sentiment Analysis identifies the emotional tone behind a body of text. Sentimen
 
 The `tidytext` package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon categorizes words into positive or negative, the `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `AFINN` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
-The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one.
+The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one. Let's look at how each of the lexicons attributes sentiment to the words. 
 
 ```r
 library(tidytext)
@@ -106,10 +106,11 @@ get_sentiments("afinn")
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Sentiment analysis with inner join
 
+Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
-
-
+Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in
 
 
 
