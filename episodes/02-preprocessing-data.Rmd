@@ -388,7 +388,16 @@ The output is a column chart:
 ```r
 count_time_machine <- tidy_time_machine %>% 
   count(word, sort = TRUE)
-```  
+  
+wordcloud(words = count_time_machine$word,
+          freq = count_time_machine$n,
+          random.order = FALSE,
+          max.words = 100,
+          colors = brewer.pal(8,"Dark2"))
+```
+
+![Wordcloud using the package wordcloud](wordcloud.png)
+  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
   
