@@ -24,7 +24,7 @@ Sentiment Analysis identifies the emotional tone behind a body of text. Sentimen
 
 
 
-The tidytext package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon categorizes words into positive or negative, the `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `AFINN` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
+The `tidytext` package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon categorizes words into positive or negative, the `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `AFINN` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one.
 
@@ -49,7 +49,26 @@ get_sentiments("bing")
 #> # … with 6,776 more rows
 ```
 
+```r
+get_sentiments("nrc")
+```
 
+```output
+#> # A tibble: 13,901 × 2
+#>    word        sentiment
+#>    <chr>       <chr>    
+#>  1 abacus      trust    
+#>  2 abandon     fear     
+#>  3 abandon     negative 
+#>  4 abandon     sadness  
+#>  5 abandoned   anger    
+#>  6 abandoned   fear     
+#>  7 abandoned   negative 
+#>  8 abandoned   sadness  
+#>  9 abandonment anger    
+#> 10 abandonment fear     
+#> # … with 13,891 more rows
+```
 
 
 
