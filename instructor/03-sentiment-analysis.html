@@ -350,7 +350,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -377,7 +377,7 @@
 </section><section id="sentiment-analysis-with-inner-join"><h2 class="section-heading">Sentiment Analysis with Inner Join<a class="anchor" aria-label="anchor" href="#sentiment-analysis-with-inner-join"></a>
 </h2>
 <hr class="half-width"><p>Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.</p>
-<p>First, we need to take the text of the books and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.</p>
+<p>First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -394,7 +394,7 @@
 <span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset.</p>
-<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine?</p>
+<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine?</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -411,10 +411,9 @@
 <span>  </span>
 <span><span class="va">tidy_time_machine</span></span></code></pre>
 </div>
-<p>The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join().</p>
-<p>Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.</p>
+<p>The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.</p>
 <p>tidy_hgwells_sentiment &lt;- tidy_books %&gt;% inner_join(get_sentiments(“bing”)) %&gt;% mutate(index = linenumber %/% 80) %&gt;% count(book, index, sentiment) %&gt;% pivot_wider(names_from = sentiment, values_from = n, values_fill = list(n = 0)) %&gt;% mutate(sentiment = positive - negative)</p>
-<p>Now let’s plot the positive and negative words for the H.G. Wells books from Project Gutenberg.</p>
+<p>Now let’s plot the positive and negative words for the H.G. Wells novels from Project Gutenberg.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -438,7 +437,7 @@
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>The word “miss” is coded as negative but if it is used as a title for young, unmarried women in books, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
+<p>The word “miss” is coded as negative but if it is used as a title for young, unmarried women in novels, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -470,7 +469,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -502,7 +501,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -532,7 +531,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -610,7 +609,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.8" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
