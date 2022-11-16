@@ -110,7 +110,7 @@ get_sentiments("afinn")
 
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
-First, we need to take the text of the books and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
+First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
 
 ```r
 library(gutenbergr)
@@ -133,7 +133,7 @@ tidy_books <- tidy_hgwells() %>%
 
 Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset. 
 
-Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine? 
+Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine? 
 
 
 
@@ -153,13 +153,7 @@ tidy_time_machine
 
 
 
-The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join().
-
-
-
-
-
-Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.
+The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.
 
 tidy_hgwells_sentiment <- tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
@@ -170,7 +164,7 @@ tidy_hgwells_sentiment <- tidy_books %>%
 
 
 
-Now let's plot the positive and negative words for the H.G. Wells books from Project Gutenberg. 
+Now let's plot the positive and negative words for the H.G. Wells novels from Project Gutenberg. 
 
 ```r
 library(ggplot2)
@@ -201,7 +195,7 @@ bing_word_counts <- tidy_books %>%
 
 
 
-The word “miss” is coded as negative but if it is used as a title for young, unmarried women in books, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：
+The word “miss” is coded as negative but if it is used as a title for young, unmarried women in novels, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：
 
 ```r 
 custom_stop_words <- tibble(word = c("miss"), lexicon = c("custom")) %>% 
