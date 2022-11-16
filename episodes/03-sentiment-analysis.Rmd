@@ -115,18 +115,15 @@ First, we need to take the text of the novels and convert the text to the tidy f
 
 
 
-Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from Emma and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.
+Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.
 
 
 ```r
 library(gutenbergr)
 library(dplyr)
 
-
-
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
-
 
 tidy_time_machine <- time_machine %>% 
    inner_join(nrc-joy) %>%
@@ -135,6 +132,9 @@ tidy_time_machine <- time_machine %>%
 tidy_time_machine
 ```
 
+
+
+The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join().
 
 
 
