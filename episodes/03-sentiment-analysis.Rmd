@@ -116,7 +116,7 @@ First, we need to take the text of the books and convert the text to the tidy fo
 library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
 
-tidy_books <- hgwells() %>%
+tidy_books <- tidy_hgwells() %>%
   group_by(book) %>%
   mutate(linenumber = row_number(),
          chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
@@ -127,9 +127,13 @@ tidy_books <- hgwells() %>%
 
 
 
-Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.
 
 
+
+
+Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset. 
+
+Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine? 
 
 
 
@@ -161,7 +165,13 @@ The tibble that was created found mostly positive words. We can also examine how
 
 
 
+Now let's plot the positive and negative words for the H.G. Wells books from Project Gutenberg. 
 
+```r
+ggplot(jane_austen_sentiment) + 
+  geom_col(aes(index, sentiment, fill = book), show.legend = F) + 
+  facet_wrap( ~ book, ncol = 2, scales = "free_x") 
+```
 
 
 Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
