@@ -165,6 +165,7 @@
       <div class="accordion-body">
         <ul><li><a href="#sentiment-analysis">Sentiment Analysis</a></li>
 <li><a href="#sentiment-analysis-with-inner-join">Sentiment Analysis with Inner Join</a></li>
+<li><a href="#most-common-positive-and-negative-words">Most common positive and negative words</a></li>
 <li><a href="#figures">Figures</a></li>
 <li><a href="#math">Math</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -349,7 +350,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -411,78 +412,47 @@
 <span><span class="va">tidy_time_machine</span></span></code></pre>
 </div>
 <p>The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join().</p>
+<p>Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.</p>
+<p>tidy_hgwells_sentiment &lt;- tidy_books %&gt;% inner_join(get_sentiments(“bing”)) %&gt;% mutate(index = linenumber %/% 80) %&gt;% count(book, index, sentiment) %&gt;% pivot_wider(names_from = sentiment, values_from = n, values_fill = list(n = 0)) %&gt;% mutate(sentiment = positive - negative)</p>
 <p>Now let’s plot the positive and negative words for the H.G. Wells books from Project Gutenberg.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">jane_austen_sentiment</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">tidy_hgwells_sentiment</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span> </span></code></pre>
 </div>
-<p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
+</section><section id="most-common-positive-and-negative-words"><h2 class="section-heading">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
+</h2>
+<hr class="half-width"><p>By implementing count() here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tidy_time_machine</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">40</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">n</span>, <span class="va">word</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">tidy_books</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb11">
+<p>The word “miss” is coded as negative but if it is used as a title for young, unmarried women in books, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">count_time_machine</span> <span class="op">&lt;-</span> <span class="va">tidy_time_machine</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">custom_stop_words</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"miss"</span><span class="op">)</span>, lexicon <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"custom"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span>
 <span>  </span>
-<span><span class="fu">wordcloud</span><span class="op">(</span>words <span class="op">=</span> <span class="va">count_time_machine</span><span class="op">$</span><span class="va">word</span>,</span>
-<span>          freq <span class="op">=</span> <span class="va">count_time_machine</span><span class="op">$</span><span class="va">n</span>,</span>
-<span>          random.order <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>          max.words <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>          colors <span class="op">=</span> <span class="fu">brewer.pal</span><span class="op">(</span><span class="fl">8</span>,<span class="st">"Dark2"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<figure><img src="../wordcloud.png" alt="" class="figure mx-auto d-block"><figcaption>Wordcloud using the package wordcloud</figcaption></figure><div id="challenge2" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div id="challenge-2-can-you-create-wordcloud-using-the-package-wordcloud" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Can you create wordcloud using the package <code>wordcloud</code>?<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
-<div class="callout-content">
-<p>Display the word frequencies of the clean data of the three novels by H.G. Wells that appear over 100 times.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Output
-  </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tidy_hgwells</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">xlab</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span></span></code></pre>
-</div>
-<figure><img src="../challenge2_solution.png" alt="" class="figure mx-auto d-block"><figcaption>Column chart for word frequency</figcaption></figure></div>
-</div>
-</div>
+<span>  </span>
+<span>  <span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">tidy_books</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">anti_join</span><span class="op">(</span><span class="va">custom_stop_words</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">sentiment</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>This is a lesson created via The Carpentries Workbench. It is written in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a> for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R Markdown</a> for dynamic files that can render code into output. Please refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The Carpentries Workbench</a> for full documentation.</p>
 <p>What you need to know is that there are three sections required for a valid Carpentries lesson template:</p>
@@ -500,23 +470,23 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-can-you-do-it-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge2"></a>
 </h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -525,14 +495,14 @@
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
   Output
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -543,26 +513,26 @@
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 2: how do you nest solutions within challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge3"></a>
 </h3>
 <div class="callout-content">
 
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -572,7 +542,7 @@
 </section><section id="figures"><h2 class="section-heading">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
 </h2>
 <hr class="half-width"><p>You can also include figures generated from R Markdown:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -640,7 +610,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.8" class="external-link">sandpaper (0.10.8)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
