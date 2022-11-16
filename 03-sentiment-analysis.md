@@ -159,76 +159,86 @@ The tibble that was created found mostly positive words. We can also examine how
 
 
 
+Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.
 
-
-
+tidy_hgwells_sentiment <- tidy_books %>%
+  inner_join(get_sentiments("bing")) %>%
+  mutate(index = linenumber %/% 80) %>% 
+  count(book, index, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = list(n = 0)) %>%
+  mutate(sentiment = positive - negative)
 
 
 
 Now let's plot the positive and negative words for the H.G. Wells books from Project Gutenberg. 
 
 ```r
-ggplot(jane_austen_sentiment) + 
+library(ggplot2)
+
+
+ggplot(tidy_hgwells_sentiment) + 
   geom_col(aes(index, sentiment, fill = book), show.legend = F) + 
   facet_wrap( ~ book, ncol = 2, scales = "free_x") 
 ```
 
 
-Beyond displaying the word frequencies in a table, we can also visualize it using the package [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
-or the packages [wordcloud](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
 
-```r
-tidy_time_machine %>% 
-  count(word, sort = TRUE) %>%
-  filter(n > 40) %>% 
-  mutate(word = reorder(word, n)) %>% 
-  ggplot(aes(n, word))+
-  geom_col()+
-  theme_bw()
+
+
+
+## Most common positive and negative words
+
+By implementing count() here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.
+ 
+ 
+```r 
+bing_word_counts <- tidy_books %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  ungroup()
 ```
-The output is a column chart:
-![Column chart for word frequency](word_frequency_bar.png)
 
 
-```r
-count_time_machine <- tidy_time_machine %>% 
-  count(word, sort = TRUE)
+
+
+The word “miss” is coded as negative but if it is used as a title for young, unmarried women in books, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：
+
+```r 
+custom_stop_words <- tibble(word = c("miss"), lexicon = c("custom")) %>% 
+  bind_rows(stop_words)
   
-wordcloud(words = count_time_machine$word,
-          freq = count_time_machine$n,
-          random.order = FALSE,
-          max.words = 100,
-          colors = brewer.pal(8,"Dark2"))
+  
+  bing_word_counts <- tidy_books %>%
+  inner_join(get_sentiments("bing")) %>% 
+  anti_join(custom_stop_words) %>%
+  group_by(sentiment) %>%
+  count(word, sentiment, sort = T) %>% 
+  ungroup()
 ```
 
-![Wordcloud using the package wordcloud](wordcloud.png)
 
 
-::::::::::::::::::::::::::::::::::::: challenge 
 
-## Challenge 2: Can you create wordcloud using the package `wordcloud`?
 
-Display the word frequencies of the clean data of the three novels by H.G. Wells that appear over 100 times.
 
-:::::::::::::::::::::::: solution 
 
-## Output
 
-```r
-tidy_hgwells %>% 
-  count(word, sort = TRUE) %>% 
-  filter(n > 100) %>% 
-  mutate(word = reorder(word, n)) %>% 
-  ggplot(aes(word, n)) +
-    geom_col() +
-    xlab(NULL) +
-    coord_flip()
-```
-![Column chart for word frequency](challenge2_solution.png)
 
-:::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
