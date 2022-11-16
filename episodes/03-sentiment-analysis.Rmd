@@ -110,6 +110,11 @@ get_sentiments("afinn")
 
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
+First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
+
+
+
+
 Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in
 
 
