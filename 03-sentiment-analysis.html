@@ -375,7 +375,7 @@
 </h2>
 <hr class="half-width"><p>Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.</p>
 <p>First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.</p>
-<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from Emma and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.</p>
+<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -383,11 +383,8 @@
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">gutenbergr</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
 <span></span>
-<span></span>
-<span></span>
 <span><span class="va">nrc_joy</span> <span class="op">&lt;-</span> <span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"nrc"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">sentiment</span> <span class="op">==</span> <span class="st">"joy"</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="va">tidy_time_machine</span> <span class="op">&lt;-</span> <span class="va">time_machine</span> <span class="op">%&gt;%</span> </span>
 <span>   <span class="fu">inner_join</span><span class="op">(</span><span class="va">nrc</span><span class="op">-</span><span class="va">joy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -395,6 +392,7 @@
 <span>  </span>
 <span><span class="va">tidy_time_machine</span></span></code></pre>
 </div>
+<p>The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join().</p>
 <p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -600,7 +598,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.8" class="external-link">sandpaper (0.10.8)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
