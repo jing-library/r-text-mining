@@ -110,12 +110,27 @@ get_sentiments("afinn")
 
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
-First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
+First, we need to take the text of the books and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
 
+```r
+library(gutenbergr)
+hgwells <- gutenberg_download(c(35, 36, 5230))
+
+tidy_books <- hgwells() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
+                                                 ignore_case = TRUE)))) %>%
+  ungroup() %>%
+  unnest_tokens(word, text)
+```
 
 
 
 Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the book The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words. Next, let’s filter() the data frame with the text from the books for the words from and then use inner_join() to perform the sentiment analysis. What are the most common joy words in Emma? Let’s use count() from dplyr.
+
+
+
 
 
 ```r
