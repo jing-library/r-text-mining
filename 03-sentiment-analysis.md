@@ -215,6 +215,26 @@ custom_stop_words <- tibble(word = c("miss"), lexicon = c("custom")) %>%
 
 
 
+```r 
+bing_word_counts %>%
+  group_by(sentiment) %>%
+  slice_max(n, n = 10) %>% 
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(n, word, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~sentiment, scales = "free_y") +
+  labs(x = "Contribution to sentiment",
+       y = NULL)
+```
+
+
+
+
+## Wordclouds
+
+The ggwordcloud package adds wordcloud extension into the ggplot2 ecosystem. The geometry geom_text_wordcloud() has a similar sytax comparing to geom_text_repel: label for the word and size for the count.
+
 
 
 
