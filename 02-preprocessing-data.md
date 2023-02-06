@@ -33,7 +33,7 @@ called **semi-structured data**. It refers to what would normally be considered
 unstructured data, but that also has metadata that identifies certain characteristics. 
 Some common examples of semi-structured data are XML, JSON, and HTML files. 
 
-**Text mining**, or **text analytics**, is the process of exploring and analyzing 
+**Text mining**, or **text analysis**, is the process of exploring and analyzing 
 unstructured or semi-structured text data to identify key concepts, pattens, 
 relationships, or other attributions of the data. **Text mining** began with the
 computational and information management areas, whereas **text analysis** originated
