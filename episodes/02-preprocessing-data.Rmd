@@ -47,7 +47,7 @@ text preprocessing or cleaning, text analysis, and communication.
 In terms of data gathering, we may create a dataset or select existing datasets. 
 After a dataset is generated, usually, we need to preprocess or clean the text to 
 get it ready for analysis. Common techniques used for preparing a dataset include 
-converting text to lower case, removing punctuation and non-alphanumeric characters,
+converting text to lower case, removing punctuations and non-alphanumeric characters,
 remove stopwords, tokenization, tagging parts of speech, word replacement,
 stemming and lemmatization, etc. Next step will be text mining or analysis. Some 
 common text mining methods are topic modelling, sentiment analysis, term frequency
