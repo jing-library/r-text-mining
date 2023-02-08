@@ -51,7 +51,7 @@ converting text to lower case, removing punctuation and non-alphanumeric charact
 remove stopwords, tokenization, tagging parts of speech, word replacement,
 stemming and lemmatization, etc. Next step will be text mining or analysis. Some 
 common text mining methods are topic modelling, sentiment analysis, term frequency
-and TD-IDF, and collocation analysis. We will then integrate the findings from text 
+and TF-IDF, and collocation analysis. We will then integrate the findings from text 
 mining to the study. Various text preprocessing techniques and text mining methods 
 serve different research purposes. This lesson is to demo how to use the 
 R package `tidytext` to preprocess text data from an existing dataset to
