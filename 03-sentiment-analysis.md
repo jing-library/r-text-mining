@@ -196,9 +196,9 @@ ggplot(hgwells_sentiment, aes(index, sentiment, fill = book)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~book, ncol = 2, scales = "free_x") 
 ```
-```output
+The output is a column chart:
 ![chart of sentiment across books](sentiment acroos books.png)
-```
+
 
 
 
@@ -247,9 +247,9 @@ bing_word_counts %>%
   labs(x = "Contribution to sentiment",
        y = NULL)
   ```
- ```output 
+The output is a column chart:
 ![chart of how each word contributed to sentiments](how each word contributed to sentiment.png)
-```
+
 
 
 
