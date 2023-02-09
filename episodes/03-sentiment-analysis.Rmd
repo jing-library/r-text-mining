@@ -14,17 +14,17 @@ exercises: 0
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Analyze sentiment using general-purpose lexicons
-- Visualize the sentiment analysis results using column chart and word cloud 
+- Visualize the sentiment analysis results using column charts 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Sentiment Analysis
 
-Sentiment Analysis identifies the emotional tone behind a body of text. When human readers approach a text, we use our understanding of the emotional intent of words to infer whether a section of text is positive or negative, or perhaps characterized by some other more nuanced emotion like surprise or disgust. Sentiment Analysis or opinion mining is a text analysis technique that automatically identifies and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words with the emotional tone that then can be compared to in other texts.
+Sentiment Analysis identifies the emotional tone behind a body of text. When human readers approach a text, we use our understanding of the emotional intent of words to infer whether a section of text is positive or negative, or perhaps characterized by some other more nuanced emotions like surprise or disgust. Sentiment Analysis or opinion mining is a text analysis technique that automatically identifies and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content as the lexicons have already identified words with the emotional tone that can be compared to other texts.
 
 
 
-The `tidytext` package comes with one sentiment lexicon and the `textdata` comes with two others. The lexicons are the sentiment lexicons from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon is from `tidytext` package and categorizes words into positive or negative. The next two lexicons are from the `textdata` package. The `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `afinn` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
+The `tidytext` package comes with one sentiment lexicon and the `textdata` comes with two others. The lexicons we will use are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These general-purpose lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon is from `tidytext` package and categorizes words into positive or negative. The next two lexicons are from the `textdata` package. The `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `afinn` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one. Let's look at how each of the lexicons attributes sentiment to the words. 
 
@@ -140,7 +140,7 @@ hgwells <- gutenberg_download(c(35, 36, 5230))
 
 
 
-Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset. 
+Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment lexicons and stop word datasets because they also have columns named word. This makes performing inner joins and anti-joins easier. 
 
 Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and `filter()` for the joy words and then use `inner_join()` to perform the sentiment analysis. Let’s use `count()` from dplyr. What are the most common joy words in The Time Machine? 
 
@@ -334,7 +334,8 @@ You can add a line with at least three colons and a `solution` tag.
 
 - Define sentiment analysis
 - Use sentiments dataset
-- Use lexicons
+- Use general-purpose lexicons
+- Analyze sentiment in text
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
