@@ -229,7 +229,7 @@ After removing the stop words, only 14 words left in the lyrics.
 
 In terms of data gathering, we can create our own data sets or use existing textual datasets. In 
 this lesson, we will use the [Project Gutenberg](https://www.gutenberg.org/) as the source of our
-data sets. The [Project Gutenberg](https://www.gutenberg.org/)is a collection of free electronic 
+data sets. The [Project Gutenberg](https://www.gutenberg.org/) is a collection of free electronic 
 books, or eBooks, available online. The R package [`gutenbergr`](https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html), 
 developed by [David Robinson](https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)), 
 allows users to download public domain works from the Project Gutenberg collection as well as 
@@ -387,7 +387,9 @@ The output is a column chart:
 ```r
 count_time_machine <- tidy_time_machine %>% 
   count(word, sort = TRUE)
-  
+
+install.packages("wordcloud")
+library(wordcloud)
 wordcloud(words = count_time_machine$word,
           freq = count_time_machine$n,
           random.order = FALSE,
