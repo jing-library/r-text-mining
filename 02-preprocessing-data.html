@@ -416,7 +416,7 @@
 </section><section id="project-gutenberg-collection"><h2 class="section-heading">Project Gutenberg Collection<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection"></a>
 </h2>
 <hr class="half-width"><p>In terms of data gathering, we can create our own data sets or use existing textual datasets. In this lesson, we will use the <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> as the source of our data sets. The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID is one of the most important metadata, which we can use to download the text for each novel.</p>
-<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a> as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download each to one by one or download all three novels into one dataframe.</p>
+<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a> as an example to see how to find the Gutenberg ID and download the text.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -424,8 +424,26 @@
 <code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"gutenbergr"</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">gutenbergr</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">time_machine</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fl">35</span><span class="op">)</span></span>
-<span><span class="va">hgwells</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">35</span>, <span class="fl">36</span>, <span class="fl">5230</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">gutenberg_metadata</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"The Time Machine"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 3 × 8
+  gutenberg_id title            author                        gutenberg_author_id language gutenberg_bookshelf         rights                              has_t…¹
+         &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                                       &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                       &lt;chr&gt;                               &lt;lgl&gt;  
+1           35 The Time Machine Wells, H. G. (Herbert George)                  30 en       Science Fiction/Movie Books Public domain in the USA.           TRUE   
+2         6620 The Time Machine Wells, H. G. (Herbert George)                  30 en       Movie Books/Science Fiction Copyrighted. Read the copyright no… FALSE  
+3        17401 The Time Machine Wells, H. G. (Herbert George)                  30 en       Movie Books                 Copyrighted. Read the copyright no… FALSE  
+# … with abbreviated variable name ¹ has_text</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">time_machine</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fl">35</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">time_machine</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -448,7 +466,7 @@
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <p>We can preprocess the text by tokenizing it words, removing punctuations, converting it to lower case, and removing stop words. The clean data has 11,268 rows and each row contains one word.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -485,7 +503,7 @@
 <h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>How would you preprocess all the three novels by H.G. Wells?</p>
+<p>How would you preprocess the following three novels <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>,<br><a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisible Man</a> by H.G. Wells?</p>
 </div>
 </div>
 </div>
@@ -498,11 +516,15 @@
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tidy_hgwells</span> <span class="op">&lt;-</span> <span class="va">hgwells</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">gutenberg_metadata</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"The War of the Worlds"</span> <span class="op">|</span> <span class="va">title</span> <span class="op">==</span> <span class="st">"The Invisible Man: A Grotesque Romance"</span><span class="op">)</span> <span class="co"># The Gutenberg IDs are 36 and 5230 respectively.</span></span>
+<span></span>
+<span><span class="va">hgwells</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">35</span>, <span class="fl">36</span>, <span class="fl">5230</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">tidy_hgwells</span> <span class="op">&lt;-</span> <span class="va">hgwells</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">anti_join</span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span>
 <span></span>
@@ -534,7 +556,7 @@
 </section><section id="word-frequencies"><h2 class="section-heading">Word Frequencies<a class="anchor" aria-label="anchor" href="#word-frequencies"></a>
 </h2>
 <hr class="half-width"><p>Since many text analysis methods are based on word counts in the textual data, we can first calculate word counts or word frequency. Word frequency looks at how how often words are repeat in texts. To count the words, we can use the function <a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a> from the package <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html" class="external-link">dplyr</a>.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -562,7 +584,7 @@
 </div>
 <p>After removing stop words, the novel <em>The Time Machine</em> contains 11,268 words, where 4,172 are unique. The word <em>time</em> is most used word and it appears 207 times in the novel.</p>
 <p>Beyond displaying the word frequencies in a table, we can also visualize it using the package <a href="https://cran.r-project.org/web/packages/ggplot2/index.html" class="external-link">ggplot2</a> or the packages <a href="https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf" class="external-link">wordcloud</a>.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -574,7 +596,7 @@
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb19">
+<figure>The output is a column chart: <img src="word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
