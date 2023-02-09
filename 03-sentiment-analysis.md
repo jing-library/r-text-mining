@@ -195,7 +195,6 @@ We then use `pivot_wider()` so that we have negative and positive sentiment in s
 
 Now let's plot the positive and negative words for the H.G. Wells novels. Notice that we are plotting against the index on the x-axis that keeps track of narrative time in sections of text.
 
-Let’s use The Time Machine, The War of the Worlds, and The Invisilbe Man as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download each to one by one or download all three novels into one dataframe.
 
 ```r
 
