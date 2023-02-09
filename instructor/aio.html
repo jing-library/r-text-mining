@@ -534,7 +534,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -648,7 +648,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-sentiment-analysis"><p>Content from <a href="03-sentiment-analysis.html">Sentiment Analysis</a></p>
 <hr>
-<p> Last updated on 2022-12-06 | 
+<p> Last updated on 2023-02-09 | 
         
         <a href="https://github.com/jing-library/r-text-mining/edit/main/episodes/03-sentiment-analysis.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 0 minutes </p>
@@ -685,8 +685,8 @@ any links that you are not going to use.
 <section id="sentiment-analysis"><h2 class="section-heading">Sentiment Analysis<a class="anchor" aria-label="anchor" href="#sentiment-analysis"></a>
 </h2>
 <hr class="half-width">
-<p>Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.</p>
-<p>The <code>tidytext</code> package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" class="external-link">Bing Liu and collaborators</a>, the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" class="external-link">NRC Emotion Lexicon</a> from Saif Mohammad and Peter Turney, and the lexicon of <a href="http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html" class="external-link">Finn Arup Nielsen</a>. These lexicons are based on unigrams, i.e., single words from the English language. The <code>bing</code> lexicon categorizes words into positive or negative, the <code>nrc</code> lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the <code>AFINN</code> lexicon categorizes words using a score, with negative scores indicating a negative sentiment.</p>
+<p>Sentiment Analysis identifies the emotional tone behind a body of text. When human readers approach a text, we use our understanding of the emotional intent of words to infer whether a section of text is positive or negative, or perhaps characterized by some other more nuanced emotion like surprise or disgust. Sentiment Analysis or opinion mining is a text analysis technique that automatically identifies and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words with the emotional tone that then can be compared to in other texts.</p>
+<p>The <code>tidytext</code> package comes with one sentiment lexicon and the <code>textdata</code> comes with two others. The lexicons are the sentiment lexicons from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" class="external-link">Bing Liu and collaborators</a>, the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" class="external-link">NRC Emotion Lexicon</a> from Saif Mohammad and Peter Turney, and the lexicon of <a href="http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html" class="external-link">Finn Arup Nielsen</a>. These lexicons are based on unigrams, i.e., single words from the English language. The <code>bing</code> lexicon is from <code>tidytext</code> package and categorizes words into positive or negative. The next two lexicons are from the <code>textdata</code> package. The <code>nrc</code> lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the <code>afinn</code> lexicon categorizes words using a score, with negative scores indicating a negative sentiment.</p>
 <p>The function <code>get_sentiments()</code> allows us to get specific sentiment lexicons with the appropriate measures for each one. Let’s look at how each of the lexicons attributes sentiment to the words.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -717,7 +717,8 @@ any links that you are not going to use.
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"nrc"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">textdata</span><span class="op">)</span></span>
+<span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"nrc"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -762,7 +763,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -790,7 +791,7 @@ any links that you are not going to use.
 </h2>
 <hr class="half-width">
 <p>Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.</p>
-<p>First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.</p>
+<p>First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -798,76 +799,179 @@ any links that you are not going to use.
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">gutenbergr</span><span class="op">)</span></span>
 <span><span class="va">hgwells</span> <span class="op">&lt;-</span> <span class="fu">gutenberg_download</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">35</span>, <span class="fl">36</span>, <span class="fl">5230</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tidy_books</span> <span class="op">&lt;-</span> <span class="fu">tidy_hgwells</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">book</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>linenumber <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>         chapter <span class="op">=</span> <span class="fu">cumsum</span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">text</span>, <span class="fu">regex</span><span class="op">(</span><span class="st">"^chapter [\\divxlc]"</span>, </span>
-<span>                                                 ignore_case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span></span></code></pre>
+<span> <span class="va">hgwells_books</span> <span class="op">&lt;-</span> <span class="va">hgwells</span> <span class="op">%&gt;%</span>  </span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>book <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>      <span class="va">gutenberg_id</span> <span class="op">==</span> <span class="fl">35</span> <span class="op">~</span> <span class="st">"The Time Machine"</span>, </span>
+<span>      <span class="va">gutenberg_id</span> <span class="op">==</span> <span class="fl">36</span> <span class="op">~</span> <span class="st">"The War of the Worlds"</span>, </span>
+<span>      <span class="va">gutenberg_id</span> <span class="op">==</span> <span class="fl">5230</span> <span class="op">~</span> <span class="st">"The Invisible Man"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">book</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>row <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>,<span class="va">text</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">anti_join</span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset.</p>
-<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine?</p>
+<p>Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and <code>filter()</code> for the joy words and then use <code>inner_join()</code> to perform the sentiment analysis. Let’s use <code>count()</code> from dplyr. What are the most common joy words in The Time Machine?</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">gutenbergr</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">nrc_joy</span> <span class="op">&lt;-</span> <span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"nrc"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">sentiment</span> <span class="op">==</span> <span class="st">"joy"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tidy_time_machine</span> <span class="op">&lt;-</span> <span class="va">time_machine</span> <span class="op">%&gt;%</span> </span>
-<span>   <span class="fu">inner_join</span><span class="op">(</span><span class="va">nrc</span><span class="op">-</span><span class="va">joy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>   <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">hgwells_books</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">book</span> <span class="op">==</span> <span class="st">"The Time Machine"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">nrc_joy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="va">tidy_time_machine</span></span></code></pre>
 </div>
-<p>The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.</p>
-<p>tidy_hgwells_sentiment &lt;- tidy_books %&gt;% inner_join(get_sentiments(“bing”)) %&gt;% mutate(index = linenumber %/% 80) %&gt;% count(book, index, sentiment) %&gt;% pivot_wider(names_from = sentiment, values_from = n, values_fill = list(n = 0)) %&gt;% mutate(sentiment = positive - negative)</p>
-<p>Now let’s plot the positive and negative words for the H.G. Wells novels from Project Gutenberg.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 164 × 2
+   word          n
+   &lt;chr&gt;     &lt;int&gt;
+ 1 found        44
+ 2 sun          29
+ 3 green        28
+ 4 feeling      20
+ 5 beautiful    12
+ 6 save         11
+ 7 comfort      10
+ 8 humanity     10
+ 9 perfect       9
+10 abundant      8
+# … with 154 more rows</code></pre>
+</div>
+<p>The tibble that was created found mostly positive words. While some of the words listed might be used by the author in a way that is not joy or positive.</p>
+<p>We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.</p>
+<p>The <code>%/%</code> operator does integer division (x %/% y is equivalent to floor(x/y)) so the index keeps track of which 80-line section of text we are counting up negative and positive sentiment in.</p>
+<p>We then use <code>pivot_wider()</code> so that we have negative and positive sentiment in separate columns, and lastly calculate a net sentiment (positive - negative).</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="va">hgwells_sentiment</span> <span class="op">&lt;-</span> <span class="va">hgwells_books</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">count</span><span class="op">(</span><span class="va">book</span>, index <span class="op">=</span> <span class="va">row</span> <span class="op">%/%</span> <span class="fl">80</span>, <span class="va">sentiment</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">sentiment</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>sentiment <span class="op">=</span> <span class="va">positive</span> <span class="op">-</span> <span class="va">negative</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Now let’s plot the positive and negative words for the H.G. Wells novels. Notice that we are plotting against the index on the x-axis that keeps track of narrative time in sections of text.</p>
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">tidy_hgwells_sentiment</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span> </span></code></pre>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">hgwells_sentiment</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_col</span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span> </span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>![image!](https://user-images.githubusercontent.com/107002205/217890252-aa9a3609-e7ad-40f8-a32d-54498c6b858c.png)
+
+![894f2cb4-2081-403c-bedf-8a953d55fe07](https://user-images.githubusercontent.com/107002205/217915386-24beb5af-4de9-456e-a2b3-072bdfc39856.png)</code></pre>
 </div>
 </section><section id="most-common-positive-and-negative-words"><h2 class="section-heading">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
 </h2>
 <hr class="half-width">
-<p>By implementing count() here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<p>By implementing <code>count()</code> here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.</p>
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">tidy_books</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">hgwells_books</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>The word “miss” is coded as negative but if it is used as a title for young, unmarried women in novels, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 1,761 × 3
+   word      sentiment     n
+   &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
+ 1 invisible negative    197
+ 2 marvel    positive    114
+ 3 strange   negative    107
+ 4 smoke     negative     92
+ 5 dark      negative     80
+ 6 darkness  negative     70
+ 7 slowly    negative     70
+ 8 stranger  negative     65
+ 9 fell      negative     59
+10 struck    negative     56
+# … with 1,751 more rows</code></pre>
+</div>
+<p>This can be shown visually, and we can pipe straight into ggplot2, if we like, because of the way we are consistently using tools built for handling tidy data frames.</p>
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">custom_stop_words</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"miss"</span><span class="op">)</span>, lexicon <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"custom"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">bing_word_counts</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">sentiment</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">slice_max</span><span class="op">(</span><span class="va">n</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">n</span>, <span class="va">word</span>, fill <span class="op">=</span> <span class="va">sentiment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_col</span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">sentiment</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Contribution to sentiment"</span>,</span>
+<span>       y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>![image](https://user-images.githubusercontent.com/107002205/217914751-b8608949-e237-4090-86fe-4e4363f81036.png)![9cd37c56-0259-4da5-a3ae-9069e3161eee](https://user-images.githubusercontent.com/107002205/217915046-f0e7d5fb-05ac-420c-93c9-2fa287a20302.png)</code></pre>
+</div>
+<p>The word “invisible” is coded as negative but since it is used to describe the condition and the main character in one of the books, let’s take it out and see how it changes the sentiment. If it were appropriate for our purposes, we could easily add “invisible” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">custom_stop_words</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>word <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"invisible"</span><span class="op">)</span>, lexicon <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"custom"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span>
 <span>  </span>
-<span>  </span>
-<span>  <span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">tidy_books</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="va">custom_stop_words</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 1,150 × 2
+  word        lexicon
+  &lt;chr&gt;       &lt;chr&gt;  
+1 invisible   custom 
+2 a           SMART  
+3 a's         SMART  
+4 able        SMART  
+5 about       SMART  
+6 above       SMART  
+7 according   SMART  
+8 accordingly SMART  
+9 across      SMART  
+10 actually    SMART  
+# … with 1,140 more rows</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="va">bing_word_counts</span> <span class="op">&lt;-</span> <span class="va">hgwells_books</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">anti_join</span><span class="op">(</span><span class="va">custom_stop_words</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">sentiment</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -904,7 +1008,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -920,7 +1024,7 @@ any links that you are not going to use.
 </h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -936,7 +1040,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -966,7 +1070,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -977,7 +1081,7 @@ any links that you are not going to use.
 </h2>
 <hr class="half-width">
 <p>You can also include figures generated from R Markdown:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1238,8 +1342,8 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/instructor/aio.html",
   "identifier": "https://jing-library.github.io/r-text-mining/instructor/aio.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2023-02-08",
-  "datePublished": "2023-02-08"
+  "dateModified": "2023-02-09",
+  "datePublished": "2023-02-09"
 }
 
   </script><script>
