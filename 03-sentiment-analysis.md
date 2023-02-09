@@ -197,9 +197,7 @@ ggplot(hgwells_sentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x") 
 ```
 ```output
-![image!](https://user-images.githubusercontent.com/107002205/217890252-aa9a3609-e7ad-40f8-a32d-54498c6b858c.png)
-
-![894f2cb4-2081-403c-bedf-8a953d55fe07](https://user-images.githubusercontent.com/107002205/217915386-24beb5af-4de9-456e-a2b3-072bdfc39856.png)
+![chart of sentiment across books](sentiment acroos books.png)
 ```
 
 
@@ -250,7 +248,7 @@ bing_word_counts %>%
        y = NULL)
   ```
  ```output 
-![image](https://user-images.githubusercontent.com/107002205/217914751-b8608949-e237-4090-86fe-4e4363f81036.png)![9cd37c56-0259-4da5-a3ae-9069e3161eee](https://user-images.githubusercontent.com/107002205/217915046-f0e7d5fb-05ac-420c-93c9-2fa287a20302.png)
+![chart of how each word contributed to sentiments](how each word contributed to sentiment.png)
 ```
 
 
