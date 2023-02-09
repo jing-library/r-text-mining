@@ -116,6 +116,11 @@ Since we are using tidy data format, sentiment analysis can be done as an inner 
 
 First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.
 
+Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
+[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
+as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download
+each to one by one or download all three novels into one dataframe. 
+
 ```r
 library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
