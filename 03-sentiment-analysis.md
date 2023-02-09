@@ -20,11 +20,11 @@ exercises: 0
 
 ## Sentiment Analysis
 
-Sentiment Analysis identifies the emotional tone behind a body of text. Sentiment Analysis or opinion mining is a text analysis technique that automatically identify and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words the emotional tone that then can be compared to in other texts.
+Sentiment Analysis identifies the emotional tone behind a body of text. When human readers approach a text, we use our understanding of the emotional intent of words to infer whether a section of text is positive or negative, or perhaps characterized by some other more nuanced emotion like surprise or disgust. Sentiment Analysis or opinion mining is a text analysis technique that automatically identifies and extracts the sentiment tone from within text. The analysis utilizes lexicons to help analyze the content of the other texts. The lexicons have already identified words with the emotional tone that then can be compared to in other texts.
 
 
 
-The `tidytext` package comes with three sentiment lexicons in the sentiment’s dataset. The lexicons are the sentiment lexicon from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon categorizes words into positive or negative, the `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `AFINN` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
+The `tidytext` package comes with one sentiment lexicon and the `textdata` comes with two others. The lexicons are the sentiment lexicons from [Bing Liu and collaborators]( https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), the [NRC Emotion Lexicon]( http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) from Saif Mohammad and Peter Turney, and the lexicon of [Finn Arup Nielsen]( http://www2.imm.dtu.dk/pubdb/pubs/6010-full.html). These lexicons are based on unigrams, i.e., single words from the English language. The `bing` lexicon is from `tidytext` package and categorizes words into positive or negative. The next two lexicons are from the `textdata` package. The `nrc` lexicon categorizes words into emotions anger, sadness, surprise, and joy, and the `afinn` lexicon categorizes words using a score, with negative scores indicating a negative sentiment.
 
 The function `get_sentiments()` allows us to get specific sentiment lexicons with the appropriate measures for each one. Let's look at how each of the lexicons attributes sentiment to the words. 
 
@@ -50,6 +50,7 @@ get_sentiments("bing")
 ```
 
 ```r
+library(textdata)
 get_sentiments("nrc")
 ```
 
@@ -110,99 +111,206 @@ get_sentiments("afinn")
 
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
-First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which line and chapter of the book each word comes from; we use group_by and mutate to construct those columns.
+First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.
 
 ```r
 library(gutenbergr)
 hgwells <- gutenberg_download(c(35, 36, 5230))
 
-tidy_books <- tidy_hgwells() %>%
-  group_by(book) %>%
-  mutate(linenumber = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
-                                                 ignore_case = TRUE)))) %>%
-  ungroup() %>%
-  unnest_tokens(word, text)
+ hgwells_books <- hgwells %>%  
+    mutate(book = case_when(
+      gutenberg_id == 35 ~ "The Time Machine", 
+      gutenberg_id == 36 ~ "The War of the Worlds", 
+      gutenberg_id == 5230 ~ "The Invisible Man")) %>% 
+    group_by(book) %>% 
+    mutate(row = row_number())%>% 
+    ungroup() %>% 
+    unnest_tokens(word,text) %>% 
+    anti_join(stop_words)
 ```
-
-
-
 
 
 
 
 Because we name the count column word in unnest_tokens(), it’s convenient to join with the sentiment dataset. 
 
-Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and filter() for the joy words and then use inner_join() to perform the sentiment analysis. Let’s use count() from dplyr. What are the most common joy words in The Time Machine? 
+Let’s look at the words with a joy score from the NRC lexicon. What are the most common joy words in the novel The Time Machine. First, let’s use the NRC lexicon and `filter()` for the joy words and then use `inner_join()` to perform the sentiment analysis. Let’s use `count()` from dplyr. What are the most common joy words in The Time Machine? 
 
 
 
 ```r
-library(gutenbergr)
 library(dplyr)
 
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
-tidy_time_machine <- time_machine %>% 
-   inner_join(nrc-joy) %>%
-   count(word, sort = TRUE)
+
+hgwells_books %>%
+  filter(book == "The Time Machine") %>%
+  inner_join(nrc_joy) %>%
+  count(word, sort = TRUE)
   
 tidy_time_machine
 ```
+```output
+# A tibble: 164 × 2
+   word          n
+   <chr>     <int>
+ 1 found        44
+ 2 sun          29
+ 3 green        28
+ 4 feeling      20
+ 5 beautiful    12
+ 6 save         11
+ 7 comfort      10
+ 8 humanity     10
+ 9 perfect       9
+10 abundant      8
+# … with 154 more rows
+```
+
+The tibble that was created found mostly positive words. While some of the words listed might be used by the author in a way that is not joy or positive. 
+
+We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text. 
+
+The `%/%` operator does integer division (x %/% y is equivalent to floor(x/y)) so the index keeps track of which 80-line section of text we are counting up negative and positive sentiment in.
+
+We then use `pivot_wider()` so that we have negative and positive sentiment in separate columns, and lastly calculate a net sentiment (positive - negative).
+
+```r
+  hgwells_sentiment <- hgwells_books %>%
+    inner_join(get_sentiments("bing")) %>%
+    count(book, index = row %/% 80, sentiment) %>%
+    pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+    mutate(sentiment = positive - negative)
+```
 
 
-
-The tibble that was created found mostly positive words. We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text.
-
-tidy_hgwells_sentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing")) %>%
-  mutate(index = linenumber %/% 80) %>% 
-  count(book, index, sentiment) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = list(n = 0)) %>%
-  mutate(sentiment = positive - negative)
-
-
-
-Now let's plot the positive and negative words for the H.G. Wells novels from Project Gutenberg. 
+Now let's plot the positive and negative words for the H.G. Wells novels. Notice that we are plotting against the index on the x-axis that keeps track of narrative time in sections of text.
 
 ```r
 library(ggplot2)
 
 
-ggplot(tidy_hgwells_sentiment) + 
-  geom_col(aes(index, sentiment, fill = book), show.legend = F) + 
-  facet_wrap( ~ book, ncol = 2, scales = "free_x") 
+ggplot(hgwells_sentiment, aes(index, sentiment, fill = book)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~book, ncol = 2, scales = "free_x") 
 ```
+```output
+![image!](https://user-images.githubusercontent.com/107002205/217890252-aa9a3609-e7ad-40f8-a32d-54498c6b858c.png)
 
-
+![894f2cb4-2081-403c-bedf-8a953d55fe07](https://user-images.githubusercontent.com/107002205/217915386-24beb5af-4de9-456e-a2b3-072bdfc39856.png)
+```
 
 
 
 
 ## Most common positive and negative words
 
-By implementing count() here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.
+By implementing `count()` here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.
  
  
 ```r 
-bing_word_counts <- tidy_books %>%
+bing_word_counts <- hgwells_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
   ungroup()
+```
+```output
+# A tibble: 1,761 × 3
+   word      sentiment     n
+   <chr>     <chr>     <int>
+ 1 invisible negative    197
+ 2 marvel    positive    114
+ 3 strange   negative    107
+ 4 smoke     negative     92
+ 5 dark      negative     80
+ 6 darkness  negative     70
+ 7 slowly    negative     70
+ 8 stranger  negative     65
+ 9 fell      negative     59
+10 struck    negative     56
+# … with 1,751 more rows
+```
+
+This can be shown visually, and we can pipe straight into ggplot2, if we like, because of the way we are consistently using tools built for handling tidy data frames.
+
+```r
+bing_word_counts %>%
+  group_by(sentiment) %>%
+  slice_max(n, n = 10) %>% 
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(n, word, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~sentiment, scales = "free_y") +
+  labs(x = "Contribution to sentiment",
+       y = NULL)
+  ```
+ ```output 
+![image](https://user-images.githubusercontent.com/107002205/217914751-b8608949-e237-4090-86fe-4e4363f81036.png)![9cd37c56-0259-4da5-a3ae-9069e3161eee](https://user-images.githubusercontent.com/107002205/217915046-f0e7d5fb-05ac-420c-93c9-2fa287a20302.png)
 ```
 
 
 
 
-The word “miss” is coded as negative but if it is used as a title for young, unmarried women in novels, it is not necessarily negative. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：
+The word “invisible” is coded as negative but since it is used to describe the condition and the main character in one of the books, let's take it out and see how it changes the sentiment. If it were appropriate for our purposes, we could easily add “invisible” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：
 
 ```r 
-custom_stop_words <- tibble(word = c("miss"), lexicon = c("custom")) %>% 
+custom_stop_words <- tibble(word = c("invisible"), lexicon = c("custom")) %>% 
   bind_rows(stop_words)
   
-  
-  bing_word_counts <- tidy_books %>%
+  custom_stop_words
+ ``` 
+
+ ```output 
+# A tibble: 1,150 × 2
+   word        lexicon
+   <chr>       <chr>  
+ 1 invisible   custom 
+ 2 a           SMART  
+ 3 a's         SMART  
+ 4 able        SMART  
+ 5 about       SMART  
+ 6 above       SMART  
+ 7 according   SMART  
+ 8 accordingly SMART  
+ 9 across      SMART  
+10 actually    SMART  
+# … with 1,140 more rows
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```r 
+  bing_word_counts <- hgwells_books %>%
   inner_join(get_sentiments("bing")) %>% 
   anti_join(custom_stop_words) %>%
   group_by(sentiment) %>%
