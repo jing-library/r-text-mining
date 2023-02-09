@@ -237,17 +237,29 @@ search and filter works by author, title, language, subjects, and other metadata
 Gutenberg ID is one of the most important metadata, which we can use to download the text for 
 each novel. 
 
-Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
-[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
-as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download
-each to one by one or download all three novels into one dataframe. 
+Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35) as an example to see how to find
+the Gutenberg ID and download the text.  
  
 ```r
 install.packages("gutenbergr")
 library(gutenbergr)
 
+gutenberg_metadata %>% 
+  filter(title == "The Time Machine")
+```
+```output
+# A tibble: 3 × 8
+  gutenberg_id title            author                        gutenberg_author_id language gutenberg_bookshelf         rights                              has_t…¹
+         <int> <chr>            <chr>                                       <int> <chr>    <chr>                       <chr>                               <lgl>  
+1           35 The Time Machine Wells, H. G. (Herbert George)                  30 en       Science Fiction/Movie Books Public domain in the USA.           TRUE   
+2         6620 The Time Machine Wells, H. G. (Herbert George)                  30 en       Movie Books/Science Fiction Copyrighted. Read the copyright no… FALSE  
+3        17401 The Time Machine Wells, H. G. (Herbert George)                  30 en       Movie Books                 Copyrighted. Read the copyright no… FALSE  
+# … with abbreviated variable name ¹ has_text
+```
+
+```r
 time_machine <- gutenberg_download(35)
-hgwells <- gutenberg_download(c(35, 36, 5230))
+
 time_machine
 
 ```
@@ -301,7 +313,9 @@ tidy_time_machine
 
 ## Challenge 1: Can you do it?
 
-How would you preprocess all the three novels by H.G. Wells?
+How would you preprocess the following three novels [The Time Machine](https://www.gutenberg.org/ebooks/35),  
+[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisible Man](https://www.gutenberg.org/ebooks/5230)
+by H.G. Wells?
 
 
 :::::::::::::::::::::::: solution 
@@ -309,6 +323,10 @@ How would you preprocess all the three novels by H.G. Wells?
 ## Output
 
 ```r
+gutenberg_metadata %>% 
+  filter(title == "The War of the Worlds" | title == "The Invisible Man: A Grotesque Romance") # The Gutenberg IDs are 36 and 5230 respectively.
+
+hgwells <- gutenberg_download(c(35, 36, 5230))
 tidy_hgwells <- hgwells %>%
   unnest_tokens(word, text) %>% 
   anti_join(stop_words)
