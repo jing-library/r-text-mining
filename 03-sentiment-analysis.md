@@ -169,7 +169,7 @@ tidy_time_machine
 # … with 154 more rows
 ```
 
-The tibble that was created found mostly positive words. While some of the words listed might be used by the author in a way that is not joy or positive. 
+The tibble that was created found mostly positive words. While some of the words listed might be used by the author in a way that is not joy or positive (found or humanity). 
 
 We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text. 
 
@@ -215,6 +215,8 @@ bing_word_counts <- hgwells_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
   ungroup()
+  
+  bing_word_counts
 ```
 ```output
 # A tibble: 1,761 × 3
