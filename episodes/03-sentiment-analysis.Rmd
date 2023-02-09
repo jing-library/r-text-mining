@@ -196,9 +196,9 @@ ggplot(hgwells_sentiment, aes(index, sentiment, fill = book)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~book, ncol = 2, scales = "free_x") 
 ```
-The output is a column chart:
-![sentiment across books](sentiment acroos books.png)
 
+The output is a column chart:
+![chart of sentiment across books](sentiment acroos books.png)
 
 
 
