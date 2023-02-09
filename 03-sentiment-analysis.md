@@ -77,11 +77,14 @@ get_sentiments("nrc")
 
 What command in R will display the afinn lexicon?
 
+
+
+:::::::::::::::::::::::: solution 
+
 ```r
 get_sentiments("afinn")
 ```
 
-:::::::::::::::::::::::: solution 
 
 ## Output
  
@@ -139,7 +142,7 @@ Let’s look at the words with a joy score from the NRC lexicon. What are the mo
 
 
 ```r
-library(dplyr)
+
 
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
@@ -150,7 +153,6 @@ hgwells_books %>%
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
   
-tidy_time_machine
 ```
 ```output
 # A tibble: 164 × 2
@@ -283,111 +285,6 @@ custom_stop_words <- tibble(word = c("invisible"), lexicon = c("custom")) %>%
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```r 
-  bing_word_counts <- hgwells_books %>%
-  inner_join(get_sentiments("bing")) %>% 
-  anti_join(custom_stop_words) %>%
-  group_by(sentiment) %>%
-  count(word, sentiment, sort = T) %>% 
-  ungroup()
-```
-
-
-
-
-
-
-```r 
-bing_word_counts %>%
-  group_by(sentiment) %>%
-  slice_max(n, n = 10) %>% 
-  ungroup() %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(n, word, fill = sentiment)) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~sentiment, scales = "free_y") +
-  labs(x = "Contribution to sentiment",
-       y = NULL)
-```
-
-
-
-
-## Wordclouds
-
-The ggwordcloud package adds wordcloud extension into the ggplot2 ecosystem. The geometry geom_text_wordcloud() has a similar sytax comparing to geom_text_repel: label for the word and size for the count.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.txt) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output. 
-Please refer to the [Introduction to The Carpentries 
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
-
-What you need to know is that there are three sections required for a valid
-Carpentries lesson template:
-
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
-
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
 Inline instructor notes can help inform instructors of timing challenges
@@ -431,8 +328,9 @@ You can add a line with at least three colons and a `solution` tag.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use general purpose lexicons
+- Define sentiment analysis
 - Use sentiments dataset
+- Use lexicons
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
