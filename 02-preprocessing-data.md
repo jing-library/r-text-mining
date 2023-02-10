@@ -33,16 +33,19 @@ called **semi-structured data**. It refers to what would normally be considered
 unstructured data, but that also has metadata that identifies certain characteristics. 
 Some common examples of semi-structured data are XML, JSON, and HTML files. 
 
-**Text mining**, or **text analysis**, is the process of exploring and analyzing 
+**Text mining**, or **text analysis**, is the **process of exploring and analyzing 
 unstructured or semi-structured text data to identify key concepts, pattens, 
-relationships, or other attributions of the data. **Text mining** began with the
-computational and information management areas, whereas **text analysis** originated
+relationships, or other attributions of the data**. Text mining began with the
+computational and information management areas, whereas text analysis originated
 in the humanities with the manual analysis of text such as newspaper indexes and Bible
-concordances. Now these two terms are exchangeable, and generally refer to the use of
-computational methods to explore and analyze unstructured text data. 
+concordances. Now these two terms are exchangeable, and generally refer to **the use of
+computational methods to explore and analyze unstructured text data**. 
 
+## Simplified Process of Text Mining Projects
 A simplified process of a typical text mining study can include four steps: data gather, 
 text preprocessing or cleaning, text analysis, and communication. 
+
+
 
 In terms of data gathering, we may create a dataset or select existing datasets. 
 After a dataset is generated, usually, we need to preprocess or clean the text to 
@@ -53,11 +56,14 @@ stemming and lemmatization, etc. Next step will be text mining or analysis. Some
 common text mining methods are topic modelling, sentiment analysis, term frequency
 and TF-IDF, and collocation analysis. We will then communicate the findings from text 
 mining through publications, conferences, or other channels. Various text preprocessing 
-techniques and text mining methods serve different research purposes. This lesson is to 
-demo how to use the R package `tidytext` to preprocess text data from an existing dataset 
-to perform a sentiment analysis.
+techniques and text mining methods serve different research purposes. 
+
+This lesson is to demo how to use the R package `tidytext` to preprocess text data from 
+an existing dataset to perform a sentiment analysis.
 
 ## Preprocess and Clean Text
+
+### Tidy Data and Tidy Text
 
 R is powerful processing structured data, or tabular data, where data display in 
 columns or tables. R can also handle unstructured and semi-structured data such as text. 
