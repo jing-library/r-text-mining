@@ -358,7 +358,7 @@ tidy_hgwells
 ## Word Frequencies
 
 Since many text analysis methods are based on word counts in the textual data, we can first calculate word counts or 
-word frequency. Word frequency looks at how how often words are repeat in texts. To count the words, we can use the 
+word frequency. Word frequency looks at how often words are repeated in texts. To count the words, we can use the 
 function [count](https://dplyr.tidyverse.org/reference/count.html) from the package [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html).  
 
 ```r
