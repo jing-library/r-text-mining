@@ -114,12 +114,13 @@ get_sentiments("afinn")
 
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
-First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.
-
 Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
 [The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
 as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download
-each to one by one or download all three novels into one dataframe. 
+each one by one or download all three novels into one dataframe. 
+
+First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.
+
 
 ```r
 library(gutenbergr)
@@ -148,7 +149,6 @@ Let’s look at the words with a joy score from the NRC lexicon. What are the mo
 
 ```r
 
-
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
@@ -176,11 +176,11 @@ hgwells_books %>%
 # … with 154 more rows
 ```
 
-The tibble that was created found mostly positive words. While some of the words listed might be used by the author in a way that is not joy or positive (found or humanity). 
+The tibble that was created found mostly positive words. While some of the words listed (found or humanity) might be used by the author in other ways than joy or positively the lexicon has identify that as a joyous word. 
 
 We can also examine how the positive words change when comparing several books. First, we find a sentiment score for each word using the Bing lexicon and inner_join(). Next, we count up how many positive and negative words there are in defined sections of each book. We define an index here to keep track of where we are in the narrative; this index (using integer division) counts up sections of 80 lines of text. 
 
-The `%/%` operator does integer division (x %/% y is equivalent to floor(x/y)) so the index keeps track of which 80-line section of text we are counting up negative and positive sentiment in.
+Remember  - the `%/%` operator does integer division (x %/% y is equivalent to floor(x/y)) so the index keeps track of which 80-line section of text we are counting up negative and positive sentiment in.
 
 We then use `pivot_wider()` so that we have negative and positive sentiment in separate columns, and lastly calculate a net sentiment (positive - negative).
 
