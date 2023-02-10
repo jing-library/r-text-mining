@@ -148,7 +148,6 @@ Let’s look at the words with a joy score from the NRC lexicon. What are the mo
 
 
 ```r
-
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
@@ -197,7 +196,6 @@ Now let's plot the positive and negative words for the H.G. Wells novels. Notice
 
 
 ```r
-
 ggplot(hgwells_sentiment, aes(index, sentiment, fill = book)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~book, ncol = 2, scales = "free_x") 
@@ -294,37 +292,6 @@ Inline instructor notes can help inform instructors of timing challenges
 associated with the lessons. They appear in the "Instructor View"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: challenge 
-
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
-```
-
-:::::::::::::::::::::::: solution 
-
-## Output
- 
-```output
-[1] "This new lesson looks good"
-```
-
-:::::::::::::::::::::::::::::::::
-
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution 
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 
 
