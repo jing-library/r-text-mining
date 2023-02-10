@@ -6,17 +6,17 @@ exercises: 1
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What are the basic steps in a typical text mining study?
-- What are the common text preprocessing techniques?
-- What is tokenization?
+- What is text mining?
+- What is the process of a typical text mining study?
+- What are the common techniques of text preprocessing?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Preprocess the example documents with the package `tidytext`
-- Calculate the word frequencies of the example documents
-- Visualize the word frequencies
+- Tokenize the textual data
+- Remove stop words
+- Calculate the word frequencies
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
