@@ -45,21 +45,25 @@ computational methods to explore and analyze unstructured text data**.
 A simplified process of a typical text mining study can include four steps: data gather, 
 text preprocessing or cleaning, text analysis, and communication. 
 
-
+![Simplified Process of Typical Text Mining Projects](simplified_process_tm.JPG)
 
 In terms of data gathering, we may create a dataset or select existing datasets. 
+
 After a dataset is generated, usually, we need to preprocess or clean the text to 
 get it ready for analysis. Common techniques used for preparing a dataset include 
 converting text to lower case, removing punctuations and non-alphanumeric characters,
 remove stopwords, tokenization, tagging parts of speech, word replacement,
-stemming and lemmatization, etc. Next step will be text mining or analysis. Some 
-common text mining methods are topic modelling, sentiment analysis, term frequency
-and TF-IDF, and collocation analysis. We will then communicate the findings from text 
-mining through publications, conferences, or other channels. Various text preprocessing 
-techniques and text mining methods serve different research purposes. 
+stemming and lemmatization, etc. 
 
-This lesson is to demo how to use the R package `tidytext` to preprocess text data from 
-an existing dataset to perform a sentiment analysis.
+Next step will be text mining or analysis. Some common text mining methods are topic 
+modelling, sentiment analysis, term frequency and TF-IDF, and collocation analysis. 
+
+We will then communicate the findings from text mining through publications, conferences, 
+or other channels. 
+
+Various text preprocessing techniques and text mining methods serve different research 
+purposes. This lesson is to demo how to use the R package `tidytext` to preprocess text 
+data from an existing dataset to perform a sentiment analysis.
 
 ## Preprocess and Clean Text
 
