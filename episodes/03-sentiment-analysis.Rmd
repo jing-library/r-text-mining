@@ -115,7 +115,7 @@ get_sentiments("afinn")
 Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.
 
 Let's use [The Time Machine](https://www.gutenberg.org/ebooks/35), 
-[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisilbe Man](https://www.gutenberg.org/ebooks/5230)
+[The War of the Worlds](https://www.gutenberg.org/ebooks/36), and [The Invisible Man](https://www.gutenberg.org/ebooks/5230)
 as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download
 each one by one or download all three novels into one dataframe. 
 
