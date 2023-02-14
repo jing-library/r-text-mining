@@ -232,7 +232,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Sentiment Analysis</h1>
-        <p> Last updated on 2023-02-10 | 
+        <p> Last updated on 2023-02-14 | 
         
         <a href="https://github.com/jing-library/r-text-mining/edit/main/episodes/03-sentiment-analysis.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -341,7 +341,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -377,7 +377,7 @@
 </section><section id="sentiment-analysis-with-inner-join"><h2 class="section-heading">Sentiment Analysis with Inner Join<a class="anchor" aria-label="anchor" href="#sentiment-analysis-with-inner-join"></a>
 </h2>
 <hr class="half-width"><p>Since we are using tidy data format, sentiment analysis can be done as an inner join. In the same manner with how to remove stop words with antijoin, performing sentiment analysis is an inner join function.</p>
-<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisilbe Man</a> as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download each one by one or download all three novels into one dataframe.</p>
+<p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>, <a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisible Man</a> as examples. The Gutenberg IDs for each book are as follows 35, 36, and 5230 respectively. We can download each one by one or download all three novels into one dataframe.</p>
 <p>First, we need to take the text of the novels and convert the text to the tidy format using unnest_tokens(), just as we did in the last lesson. Let’s also set up some other columns to keep track of which row of the book each word comes from; we use group_by and mutate to construct those columns.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -602,7 +602,7 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/03-sentiment-analysis.html",
   "identifier": "https://jing-library.github.io/r-text-mining/03-sentiment-analysis.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2023-02-10",
+  "dateModified": "2023-02-14",
   "datePublished": "2023-02-14"
 }
 
