@@ -300,7 +300,7 @@ associated with the lessons. They appear in the "Instructor View"
 
 - Define sentiment analysis
 - Use sentiments dataset
-- Use general-purpose lexicons 
+- Use general-purpose lexicons
 - Analyze sentiment in text
 
 
