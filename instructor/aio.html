@@ -460,9 +460,12 @@
 </div>
 <p>After removing the stop words, only 14 words left in the lyrics.</p>
 </div>
-</section><section id="project-gutenberg-collection"><h2 class="section-heading">Project Gutenberg Collection<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection"></a>
+</section><section id="apply-data-preprocessing-to-a-text-mining-project"><h2 class="section-heading">Apply Data Preprocessing to a Text Mining Project<a class="anchor" aria-label="anchor" href="#apply-data-preprocessing-to-a-text-mining-project"></a>
 </h2>
 <hr class="half-width">
+<div class="section level3">
+<h3 id="project-gutenberg-collection">Project Gutenberg Collection<a class="anchor" aria-label="anchor" href="#project-gutenberg-collection"></a>
+</h3>
 <p>In terms of data gathering, we can create our own data sets or use existing textual datasets. In this lesson, we will use the <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> as the source of our data sets. The <a href="https://www.gutenberg.org/" class="external-link">Project Gutenberg</a> is a collection of free electronic books, or eBooks, available online. The R package <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html" class="external-link"><code>gutenbergr</code></a>, developed by <a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)" class="external-link">David Robinson</a>, allows users to download public domain works from the Project Gutenberg collection as well as search and filter works by author, title, language, subjects, and other metadata. Project Gutenberg ID is one of the most important metadata, which we can use to download the text for each novel.</p>
 <p>Let’s use <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a> as an example to see how to find the Gutenberg ID and download the text.</p>
 <div class="codewrapper sourceCode" id="cb10">
@@ -562,7 +565,7 @@
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -596,6 +599,7 @@
 10           35 traveller   
 # … with 52,303 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
+</div>
 </div>
 </div>
 </div>

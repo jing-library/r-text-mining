@@ -73,7 +73,7 @@
         "R",
         "methods"
       ],
-      "Hash": "3f2049384d08f091964497d677ffe226"
+      "Hash": "699a7a93d08c962d9f8950b2d7a227f1"
     },
     "fastmap": {
       "Package": "fastmap",
@@ -102,7 +102,7 @@
         "R",
         "methods"
       ],
-      "Hash": "2b1a3dfde68e8fdb5c1292474b9d7c63"
+      "Hash": "4f2596dfb05dac67b9dc558e5c6fba2e"
     },
     "highr": {
       "Package": "highr",
@@ -113,7 +113,7 @@
         "R",
         "xfun"
       ],
-      "Hash": "39802169c162bf5f263f66df5d30536a"
+      "Hash": "8eb36c8125038e648e5d111c0d7b2ed4"
     },
     "htmltools": {
       "Package": "htmltools",
@@ -129,7 +129,7 @@
         "rlang",
         "utils"
       ],
-      "Hash": "598c5ee55098967f31fec566a84362e7"
+      "Hash": "526c484233f42522278ab06fb185cb26"
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -166,7 +166,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "ae05d019bd609fb7be7d34001c70c365"
+      "Hash": "029ab7c4badd3cf8af69016b2ba27493"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -186,7 +186,7 @@
       "Requirements": [
         "R"
       ],
-      "Hash": "1c3bb00ca681781e8dacd7378fa17101"
+      "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
     },
     "renv": {
       "Package": "renv",
@@ -230,7 +230,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "bb39469c4b625f053fe98c5848de62cf"
+      "Hash": "31b60a882fabfabf6785b8599ffeb8ba"
     },
     "sass": {
       "Package": "sass",
@@ -244,7 +244,7 @@
         "rappdirs",
         "rlang"
       ],
-      "Hash": "b67306e5d80a36a484e7a8d7937045a4"
+      "Hash": "f37c0028d720bab3c513fd65d28c7234"
     },
     "stringi": {
       "Package": "stringi",
@@ -276,11 +276,11 @@
       "Package": "tinytex",
       "Version": "0.39",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "xfun"
       ],
-      "Hash": "7befb9e4473deb9f67d0b4cc337e7954"
+      "Hash": "29f67ab15405b390b90e56ff22198ead"
     },
     "xfun": {
       "Package": "xfun",
@@ -291,14 +291,14 @@
         "stats",
         "tools"
       ],
-      "Hash": "83fed9766ff042f75efb414935cccbbf"
+      "Hash": "a318c6f752b8dcfe9fb74d897418ab2b"
     },
     "yaml": {
       "Package": "yaml",
       "Version": "2.3.5",
       "Source": "Repository",
-      "Repository": "RSPM",
-      "Hash": "6ef568dfa6bd53da5dc9580822e0b849"
+      "Repository": "CRAN",
+      "Hash": "458bb38374d73bf83b1bb85e353da200"
     }
   }
 }
