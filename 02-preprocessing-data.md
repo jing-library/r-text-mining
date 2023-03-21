@@ -235,7 +235,8 @@ lyrics_df %>%
 ```
 After removing the stop words, only 14 words left in the lyrics.
 
-## Project Gutenberg Collection
+## Apply Data Preprocessing to a Text Mining Project
+### Project Gutenberg Collection
 
 In terms of data gathering, we can create our own data sets or use existing textual datasets. In 
 this lesson, we will use the [Project Gutenberg](https://www.gutenberg.org/) as the source of our
