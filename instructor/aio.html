@@ -546,12 +546,12 @@
 # … with 11,258 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1-can-you-do-it" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
 </h3>
 <div class="callout-content">
 <p>How would you preprocess the following three novels <a href="https://www.gutenberg.org/ebooks/35" class="external-link">The Time Machine</a>,<br><a href="https://www.gutenberg.org/ebooks/36" class="external-link">The War of the Worlds</a>, and <a href="https://www.gutenberg.org/ebooks/5230" class="external-link">The Invisible Man</a> by H.G. Wells?</p>
@@ -649,7 +649,8 @@
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
+<p>The output is a column chart: <img src="../word_frequency_bar.png" alt="Column chart for word frequency" class="figure"></p>
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -664,7 +665,8 @@
 <span>          max.words <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>          colors <span class="op">=</span> <span class="fu">brewer.pal</span><span class="op">(</span><span class="fl">8</span>,<span class="st">"Dark2"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a word cloud: <img src="../wordcloud.png" alt="Wordcloud using the package wordcloud" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
+<p>The output is a word cloud: <img src="../wordcloud.png" alt="Wordcloud using the package wordcloud" class="figure"></p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -776,12 +778,12 @@ any links that you are not going to use.
 <span><span class="co">#&gt; 10 abandonment fear     </span></span>
 <span><span class="co">#&gt; # … with 13,891 more rows</span></span></code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1-can-you-do-it" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
 </h3>
 <div class="callout-content">
 <p>What command in R will display the afinn lexicon?</p>
@@ -795,7 +797,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -910,7 +912,8 @@ any links that you are not going to use.
 <span>  <span class="fu">geom_col</span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span> </span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../sentiment%20across%20books.png" alt="chart of sentiment across books" class="figure mx-auto d-block"></figure></section><section id="most-common-positive-and-negative-words"><h2 class="section-heading">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
+<p>The output is a column chart: <img src="../sentiment%20across%20books.png" alt="chart of sentiment across books" class="figure"></p>
+</section><section id="most-common-positive-and-negative-words"><h2 class="section-heading">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
 </h2>
 <hr class="half-width">
 <p>By implementing <code>count()</code> here with arguments of both word and sentiment, we find out how much each word contributed to each sentiment.</p>
@@ -958,7 +961,8 @@ any links that you are not going to use.
 <span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Contribution to sentiment"</span>,</span>
 <span>       y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre>
 </div>
-<figure>The output is a column chart: <img src="../how%20each%20word%20contributed%20to%20sentiment.png" alt="chart of how each word contributed to sentiments" class="figure mx-auto d-block"></figure><p>The word “invisible” is coded as negative but since it is used to describe the condition and the main character in one of the books, let’s take it out and see how it changes the sentiment. If it were appropriate for our purposes, we could easily add “invisible” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
+<p>The output is a column chart: <img src="../how%20each%20word%20contributed%20to%20sentiment.png" alt="chart of how each word contributed to sentiments" class="figure"></p>
+<p>The word “invisible” is coded as negative but since it is used to describe the condition and the main character in one of the books, let’s take it out and see how it changes the sentiment. If it were appropriate for our purposes, we could easily add “invisible” to a custom stop-words list using bind_rows(). We could implement that with a strategy such as this：</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -994,7 +998,7 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
@@ -1079,19 +1083,19 @@ any links that you are not going to use.
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing challenges associated with the lessons. They appear in the “Instructor View”</p>
 </div>
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1-can-you-do-it" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
 </h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
@@ -1111,7 +1115,7 @@ any links that you are not going to use.
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1122,12 +1126,12 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2: how do you nest solutions within challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do-you-nest-solutions-within-challenge-blocks"></a>
 </h3>
 <div class="callout-content">
 
@@ -1141,7 +1145,7 @@ any links that you are not going to use.
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a <code>solution</code> tag.</p>
 </div>
@@ -1219,9 +1223,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -1243,8 +1247,8 @@ any links that you are not going to use.
   "url": "https://jing-library.github.io/r-text-mining/instructor/aio.html",
   "identifier": "https://jing-library.github.io/r-text-mining/instructor/aio.html",
   "dateCreated": "2022-06-14",
-  "dateModified": "2023-05-16",
-  "datePublished": "2023-05-16"
+  "dateModified": "2023-05-30",
+  "datePublished": "2023-05-30"
 }
 
   </script><script>
